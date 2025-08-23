@@ -1,0 +1,45 @@
+header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 20% 80%);
+  align-content: center;
+  justify-items: center;
+  padding: 30px 10px 30px 50px;
+
+  .img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+  .item {
+    display: grid;
+    grid-template-columns: repeat(2, 60% 40%);
+    width: 100%;
+    align-items: center;
+
+    &-group1,
+    &-group2 {
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+
+      &__list {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+.pi {
+  font-size: 1.4rem;
+}

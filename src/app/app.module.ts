@@ -5,11 +5,18 @@ import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TstComponent } from './testcomp/tst.component';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, TstComponent],
-  imports: [BrowserModule, AppRoutingModule, ButtonModule, TableModule],
+  declarations: [AppComponent, HeaderComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ButtonModule,
+    TableModule,
+    CommonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
