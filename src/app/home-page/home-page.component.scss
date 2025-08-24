@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .banner {
   width: 100%;
   background-image: url("/assets/img/scandinavian-interior-mockup-wall-decal-background 1.png");
@@ -27,7 +29,7 @@
       }
 
       h1 {
-        color: #b88e2f;
+        color: $color-primary;
         font-weight: 700;
         font-size: 52px;
       }
