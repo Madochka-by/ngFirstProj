@@ -5,7 +5,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    loadChildren: () =>
+      import('./home-page/home-page.module').then((m) => m.HomePageModule),
   },
 ];
 
