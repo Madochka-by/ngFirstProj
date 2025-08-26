@@ -1,0 +1,40 @@
+@use "variables" as *;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5vh 5vw;
+
+  .img {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+
+    &-group1,
+    &-group2 {
+      font-weight: 500;
+      display: flex;
+      gap: 5vw;
+
+      li {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+.pi {
+  font-size: 1.4rem;
+}
