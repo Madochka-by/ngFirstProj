@@ -273,8 +273,158 @@
   }
 }
 
+.inspirations {
+  background: #fcf8f3;
+  position: relative;
+
+  .arrow {
+    border-radius: 50px;
+    background: white;
+    position: absolute;
+    color: $color-primary;
+    top: 40%;
+    right: 2vw;
+    z-index: 11111;
+    box-shadow: 0px 4px 14px 1px #00000029;
+
+    i {
+      padding: 10px 10px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+  }
+
+  .margin {
+    padding: 40px 0 40px 7vw;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  &-info {
+    width: 100%;
+
+    p {
+      font-weight: 500;
+      color: #616161;
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: $color-darkGrey;
+    }
+
+    button {
+      background: $color-primary;
+      font-weight: 600;
+      color: white;
+      padding: 10px 30px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &-slider {
+    width: 110%;
+    overflow: hidden;
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &-current {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .currentslide {
+      color: $color-primary;
+      border: 1px solid $color-primary;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    &-wrapper {
+      display: flex;
+      gap: 20px;
+      width: 200%;
+    }
+  }
+
+  &-curslide {
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    img {
+      position: relative;
+    }
+
+    &-content {
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      padding: 20px;
+
+      &-info {
+        backdrop-filter: blur(3px);
+        background: rgba(255, 255, 255, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 5vh;
+
+        p {
+          color: #616161;
+          font-weight: 500;
+        }
+
+        h1 {
+          font-size: 28px;
+          font-weight: 600;
+          color: $color-darkGrey;
+        }
+      }
+
+      i {
+        color: white;
+      }
+
+      button {
+        width: 50px;
+        height: 50px;
+        background: $color-primary;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
 .funiro {
-  margin: 14vh 0 7vh 0;
+  margin: 20vh 0 7vh 0;
   background-image: url("/assets/img/FurniroFurnitureBackGround.png");
   background-repeat: no-repeat;
   background-size: cover;
