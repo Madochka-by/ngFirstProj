@@ -1,0 +1,34 @@
+@use "variables" as *;
+
+.onfooter {
+  margin-top: 5vh;
+  background: #faf3ea;
+  padding: 10vh 30px;
+  display: flex;
+  justify-content: space-between;
+
+  &-item {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 100%;
+      grid-row: 1/2 span;
+    }
+
+    p {
+      color: #242424;
+      font-weight: 600;
+      font-size: 25px;
+      grid-column: 2/3;
+    }
+
+    span {
+      color: $color-ligthGrey;
+      font-weight: 500;
+      font-size: 20 px;
+      grid-column: 2/3;
+    }
+  }
+}
