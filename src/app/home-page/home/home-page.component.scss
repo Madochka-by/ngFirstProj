@@ -188,6 +188,7 @@
             display: flex;
             gap: 5px;
             cursor: pointer;
+
             &:hover {
               opacity: 0.7;
             }
@@ -270,4 +271,8 @@
       }
     }
   }
+}
+
+.inspirations {
+  width: 100%;
 }
