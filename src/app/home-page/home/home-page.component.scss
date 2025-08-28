@@ -305,6 +305,10 @@
     display: flex;
     gap: 30px;
     align-items: center;
+
+    > :last-child {
+      align-self: flex-start;
+    }
   }
 
   &-info {
@@ -363,16 +367,26 @@
       display: flex;
       gap: 20px;
       width: 200%;
+      height: 65vh;
+
+      img {
+        height: 100%;
+        object-fit: fill;
+      }
     }
   }
 
   &-curslide {
     background-size: cover;
     width: 100%;
+    height: 85vh;
     display: flex;
     align-items: flex-end;
 
     img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
       position: relative;
     }
 
