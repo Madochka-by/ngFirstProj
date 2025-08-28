@@ -199,6 +199,7 @@
 
             span {
               font-weight: 600;
+              font-family: poppins;
             }
           }
 
@@ -384,6 +385,7 @@
       height: 100%;
       object-fit: cover;
       position: relative;
+      transition: opacity 0.3s;
     }
 
     &-content {
