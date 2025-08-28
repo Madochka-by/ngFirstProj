@@ -42,10 +42,10 @@ export class HomePageComponent {
     },
   ];
 
-  nextSlide() {
+  nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
   }
-  goToSlide(index: number) {
+  goToSlide(index: number): void {
     this.currentIndex = index;
   }
 }
