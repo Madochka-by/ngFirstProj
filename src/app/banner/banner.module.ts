@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BannerLineComponent } from './banner-line/banner-line.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [CommonModule],
