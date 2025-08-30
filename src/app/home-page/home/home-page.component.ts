@@ -45,7 +45,7 @@ export class HomePageComponent {
     },
     {
       id: 3,
-      img: '/assets/img/slide1.png',
+      img: '/assets/img/slide3.png',
       title: 'Inner Bed',
       category: 'Dinning',
     },
@@ -59,9 +59,10 @@ export class HomePageComponent {
 
   public slidesCorusel: string[] = [
     '/assets/img/slide2.png',
-    '/assets/img/slide1.png',
+    '/assets/img/slide3.png',
     '/assets/img/slide2.png',
     '/assets/img/slide1.png',
+    '/assets/img/slide2.png',
   ];
 
   nextSlide(): void {
