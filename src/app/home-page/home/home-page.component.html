@@ -244,7 +244,7 @@
     </div>
 
     <div class="inspirations-curslide">
-      <img [src]="slides[currentIndex].img" alt="" />
+      <img [@fadeIn]="currentIndex" [src]="slides[currentIndex].img" alt="" />
       <div class="inspirations-curslide-content">
         <div class="inspirations-curslide-content-info">
           <p>
@@ -253,13 +253,23 @@
           </p>
           <h1>{{ slides[currentIndex].title }}</h1>
         </div>
-        <button><i class="pi pi-arrow-right"></i></button>
+        <button>
+          <i class="pi pi-arrow-right"></i>
+        </button>
       </div>
     </div>
     <div class="inspirations-slider">
       <div class="inspirations-slider-wrapper">
-        <img src="/assets/img/slide2.png" alt="" />
-        <img src="/assets/img/slide2.png" alt="" />
+        <img
+          [@fadeIn]="currentIndexCorusel"
+          [src]="slidesCorusel[currentIndexCorusel]"
+          alt=""
+        />
+        <img
+          [@fadeIn]="currentIndexCorusel"
+          [src]="slidesCorusel[currentIndexCorusel + 1]"
+          alt=""
+        />
       </div>
       <div class="inspirations-slider-current">
         <i
@@ -272,7 +282,7 @@
     </div>
   </div>
 </div>
-
+<!-- [src]="slidesCorusel[currentIndexCorusel + 1]" -->
 <div class="funiro">
   <div class="funiro-text">
     <p>Share your setup with</p>

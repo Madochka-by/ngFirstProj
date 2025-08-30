@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 export interface slide {
@@ -7,13 +8,27 @@ export interface slide {
   category: string;
 }
 
+const incrementTransition = transition(':increment', [
+  style({ opacity: 0 }),
+  animate('0.2s ease-out', style({ opacity: 1 })),
+]);
+
+const decrementTransition = transition(':decrement', [
+  style({ opacity: 0 }),
+  animate('0.2s ease-out', style({ opacity: 1 })),
+]);
+
+const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  animations: [fadeIn],
 })
 export class HomePageComponent {
   public currentIndex: number = 0;
+  public currentIndexCorusel: number = 0;
 
   public slides: slide[] = [
     {
@@ -42,10 +57,22 @@ export class HomePageComponent {
     },
   ];
 
+  public slidesCorusel: string[] = [
+    '/assets/img/slide2.png',
+    '/assets/img/slide1.png',
+    '/assets/img/slide2.png',
+    '/assets/img/slide1.png',
+  ];
+
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    this.currentIndexCorusel += 1;
+    if (this.currentIndexCorusel === 4) {
+      this.currentIndexCorusel = 0;
+    }
   }
   goToSlide(index: number): void {
     this.currentIndex = index;
+    this.currentIndexCorusel = index;
   }
 }
