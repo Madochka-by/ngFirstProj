@@ -10,10 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetDBDataService } from './shop-page/service/get-dbdata.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, CardComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
