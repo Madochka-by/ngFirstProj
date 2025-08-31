@@ -5,15 +5,15 @@ import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetDBDataService } from './shop-page/service/get-dbdata.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, CardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

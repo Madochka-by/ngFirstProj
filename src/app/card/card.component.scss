@@ -1,0 +1,123 @@
+@use "variables" as *;
+
+.card {
+  background: #f4f5f7;
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    inset: 0;
+    z-index: 1;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+  }
+
+  &-frame {
+    width: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    &-hover {
+      width: 100%;
+      top: 65%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 111;
+      transition: 0.2s ease-in-out;
+      opacity: 0;
+
+      i {
+        color: white;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+
+        span {
+          font-weight: 600;
+          font-family: poppins;
+        }
+      }
+
+      button {
+        background: white;
+        padding: 10px 5vw;
+        color: $color-primary;
+        font-weight: 600;
+
+        &:hover {
+          background: rgb(233, 232, 232);
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+
+      &-item {
+        display: flex;
+        gap: 40px;
+      }
+    }
+  }
+
+  &-info {
+    padding: 20px 10px 35px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h2 {
+      color: $color-darkGrey;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #898989;
+      font-weight: 500;
+    }
+
+    &-price {
+      display: flex;
+      gap: 10px;
+
+      p {
+        color: $color-darkGrey;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      span {
+        text-decoration: line-through;
+        color: #b0b0b0;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &:hover {
+    .overlay {
+      opacity: 1;
+    }
+
+    .products-items-card-frame-hover {
+      opacity: 1;
+    }
+  }
+}

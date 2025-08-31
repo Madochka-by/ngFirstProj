@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 export interface slide {
   id: number;
@@ -27,6 +27,8 @@ const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
   animations: [fadeIn],
 })
 export class HomePageComponent {
+  public path: string = 'home';
+
   public currentIndex: number = 0;
   public currentIndexCorusel: number = 0;
 

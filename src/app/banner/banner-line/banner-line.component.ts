@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,4 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './banner-line.component.html',
   styleUrls: ['./banner-line.component.scss'],
 })
-export class BannerLineComponent {}
+export class BannerLineComponent {
+  @Input() title?: string;
+  @Input() path?: string;
+}
