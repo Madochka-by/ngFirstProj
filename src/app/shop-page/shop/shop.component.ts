@@ -7,9 +7,6 @@ import { GetDBDataService } from '../service/get-dbdata.service';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  public path: string = 'shop';
-  public title: string = 'shop';
-
   public KEYS: string[] = [];
   public parsedData: any[] = [];
   public BEDROOM: any[] = [];
