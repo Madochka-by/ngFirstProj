@@ -262,12 +262,8 @@
       <div class="inspirations-slider-wrapper">
         <img
           [@fadeIn]="currentIndexCorusel"
-          [src]="slidesCorusel[currentIndexCorusel]"
-          alt=""
-        />
-        <img
-          [@fadeIn]="currentIndexCorusel"
-          [src]="slidesCorusel[currentIndexCorusel + 1]"
+          *ngFor="let slide of carouselSlide"
+          [src]="slide.img"
           alt=""
         />
       </div>

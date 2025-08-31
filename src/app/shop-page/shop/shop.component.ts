@@ -16,6 +16,6 @@ export class ShopComponent implements OnInit {
   constructor(private getDBDataService: GetDBDataService) {}
 
   public ngOnInit(): void {
-    this.getDBDataService.getData().subscribe((res) => {});
+    this.getDBDataService.getData().subscribe((res) => console.log(res.living));
   }
 }

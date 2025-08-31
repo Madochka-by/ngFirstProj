@@ -59,13 +59,12 @@ export class HomePageComponent {
     },
   ];
 
-  public slidesCorusel: string[] = [
-    '/assets/img/slide2.png',
-    '/assets/img/slide3.png',
-    '/assets/img/slide2.png',
-    '/assets/img/slide1.png',
-    '/assets/img/slide2.png',
-  ];
+  get carouselSlide() {
+    return [
+      this.slides[(this.currentIndexCorusel + 1) % this.slides.length],
+      this.slides[(this.currentIndexCorusel + 2) % this.slides.length],
+    ];
+  }
 
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;

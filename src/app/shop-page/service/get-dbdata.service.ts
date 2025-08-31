@@ -18,14 +18,20 @@ export interface CardData {
   size: string[];
 }
 
+export interface CategoryOfProduct {
+  bedroom: CardData[];
+  dining: CardData[];
+  living: CardData[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class GetDBDataService {
   constructor(private _httpClient: HttpClient) {}
 
-  public getData(): Observable<CardData[]> {
-    return this._httpClient.get<CardData[]>(
+  public getData(): Observable<CategoryOfProduct[]> {
+    return this._httpClient.get<CategoryOfProduct[]>(
       'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
     );
   }
