@@ -17,11 +17,16 @@ export interface CardData {
   sale: string;
   size: string[];
 }
+export interface RoomsItem {
+  chairs: CardData[];
+  tables: CardData[];
+  sofas: CardData[];
+}
 
 export interface CategoryOfProduct {
-  bedroom: CardData[];
-  dining: CardData[];
-  living: CardData[];
+  bedroom: RoomsItem;
+  dining: RoomsItem;
+  living: RoomsItem;
 }
 
 @Injectable({
@@ -30,8 +35,8 @@ export interface CategoryOfProduct {
 export class GetDBDataService {
   constructor(private _httpClient: HttpClient) {}
 
-  public getData(): Observable<CategoryOfProduct[]> {
-    return this._httpClient.get<CategoryOfProduct[]>(
+  public getData(): Observable<CategoryOfProduct> {
+    return this._httpClient.get<CategoryOfProduct>(
       'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
     );
   }
