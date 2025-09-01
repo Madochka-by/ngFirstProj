@@ -41,21 +41,27 @@ export class GetDBDataService {
   public BEDROOM: any[] = [];
   public KEYS: any[] = [];
 
-  constructor(private _httpClient: HttpClient) {}
+  private data$: Observable<CategoryOfProduct>;
 
-  public getDataFromDB(): Observable<CategoryOfProduct> {
-    return this._httpClient
+  constructor(private _httpClient: HttpClient) {
+    this.data$ = this._httpClient
       .get<CategoryOfProduct>(
         'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
       )
       .pipe(shareReplay(1));
   }
 
-  setData(data: any[]) {
-    this.allCategoryData = data;
-  }
-
-  getData(): any[] {
-    return this.allCategoryData;
+  getData(): Observable<CategoryOfProduct> {
+    return this.data$;
   }
 }
+
+// public ngOnInit(): void {
+//   this.getDBDataService.getDataFromDB().subscribe((res) => {
+//     this.allData = Object.values(res)
+//       .flatMap((room: any) => Object.values(room))
+//       .flatMap((category: any) => Object.values(category));
+
+//     this.getDBDataService.setData(this.allData);
+//   });
+// }

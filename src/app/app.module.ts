@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetDBDataService } from './shop-page/service/get-dbdata.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlatMapService } from './functionForAllProject/FlatMap/flat-map.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [GetDBDataService],
+  providers: [GetDBDataService, FlatMapService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

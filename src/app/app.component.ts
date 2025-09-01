@@ -7,4 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngFirstProj';
+
+  get funct() {
+    console.log(213);
+    return 123;
+  }
 }

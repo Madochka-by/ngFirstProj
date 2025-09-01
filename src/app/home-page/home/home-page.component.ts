@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { GetDBDataService } from 'src/app/shop-page/service/get-dbdata.service';
 
 export interface slide {
@@ -27,12 +28,15 @@ const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
   styleUrls: ['./home-page.component.scss'],
   animations: [fadeIn],
 })
-export class HomePageComponent {
-  constructor(private getDBDataService: GetDBDataService) {}
+export class HomePageComponent implements OnInit {
+  constructor(
+    private _getData: GetDBDataService,
+    private _proccessingFunc: FlatMapService
+  ) {}
 
   public path: string = 'home';
 
-  public dataFromDb: any[] = [];
+  public allData: any[] = [];
 
   public currentIndex: number = 0;
   public currentIndexCorusel: number = 0;
@@ -83,9 +87,9 @@ export class HomePageComponent {
     this.currentIndexCorusel = index;
   }
 
-  get func() {
-    this.dataFromDb = this.getDBDataService.getData();
-    console.log(this.dataFromDb);
-    return (this.dataFromDb = this.getDBDataService.getData());
+  ngOnInit(): void {
+    this._getData.getData().subscribe((res: any) => {
+      this.allData = this._proccessingFunc.bringingDataIntoLine(res);
+    });
   }
 }

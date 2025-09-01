@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDBDataService } from '../service/get-dbdata.service';
+import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 
 @Component({
   selector: 'app-shop',
@@ -7,17 +8,16 @@ import { GetDBDataService } from '../service/get-dbdata.service';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  constructor(private getDBDataService: GetDBDataService) {}
-
   public allData: any[] = [];
 
-  public ngOnInit(): void {
-    this.getDBDataService.getDataFromDB().subscribe((res) => {
-      this.allData = Object.values(res)
-        .flatMap((room: any) => Object.values(room))
-        .flatMap((category: any) => Object.values(category));
+  constructor(
+    private _getData: GetDBDataService,
+    private _proccessingFunc: FlatMapService
+  ) {}
 
-      this.getDBDataService.setData(this.allData);
+  ngOnInit(): void {
+    this._getData.getData().subscribe((res: any) => {
+      this.allData = this._proccessingFunc.bringingDataIntoLine(res);
     });
   }
 }

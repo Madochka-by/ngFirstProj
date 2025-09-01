@@ -39,7 +39,7 @@
 <div class="products">
   <h1>Our Products</h1>
   <div class="products-items">
-    <ng-container *ngFor="let item of func | slice : 0 : 8">
+    <ng-container *ngFor="let item of allData | slice : 0 : 8">
       <app-card
         [price]="item.price"
         [img]="item.previewImg"

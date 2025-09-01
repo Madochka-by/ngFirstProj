@@ -27,4 +27,15 @@
   </div>
 </div>
 
+<div class="cards">
+  <ng-container *ngFor="let item of allData">
+    <app-card
+      [price]="item.price"
+      [img]="item.previewImg"
+      [name]="item.name"
+      [description]="item.previewDescription"
+    ></app-card>
+  </ng-container>
+</div>
+
 <app-onfooter></app-onfooter>
