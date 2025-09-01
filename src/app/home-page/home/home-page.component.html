@@ -39,15 +39,13 @@
 <div class="products">
   <h1>Our Products</h1>
   <div class="products-items">
-    <ng-container>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
-      <app-card></app-card>
+    <ng-container *ngFor="let item of func | slice : 0 : 8">
+      <app-card
+        [price]="item.price"
+        [img]="item.previewImg"
+        [name]="item.name"
+        [description]="item.previewDescription"
+      ></app-card>
     </ng-container>
   </div>
   <button class="products__btn">Show More</button>

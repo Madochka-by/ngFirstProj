@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { GetDBDataService } from 'src/app/shop-page/service/get-dbdata.service';
 
 export interface slide {
   id: number;
@@ -27,7 +28,11 @@ const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
   animations: [fadeIn],
 })
 export class HomePageComponent {
+  constructor(private getDBDataService: GetDBDataService) {}
+
   public path: string = 'home';
+
+  public dataFromDb: any[] = [];
 
   public currentIndex: number = 0;
   public currentIndexCorusel: number = 0;
@@ -76,5 +81,11 @@ export class HomePageComponent {
   goToSlide(index: number): void {
     this.currentIndex = index;
     this.currentIndexCorusel = index;
+  }
+
+  get func() {
+    this.dataFromDb = this.getDBDataService.getData();
+    console.log(this.dataFromDb);
+    return (this.dataFromDb = this.getDBDataService.getData());
   }
 }

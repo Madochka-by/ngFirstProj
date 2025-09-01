@@ -1,7 +1,7 @@
 <div class="card">
   <div class="overlay"></div>
   <div class="card-frame">
-    <img src="assets/img/image 1.png" alt="" />
+    <img [src]="img" alt="" />
     <div class="card-frame-hover">
       <button>Add to cart</button>
       <div class="card-frame-hover-item">
@@ -12,10 +12,10 @@
     </div>
   </div>
   <div class="card-info">
-    <h2>Syltherine</h2>
-    <p>Stylish cafe chair</p>
+    <h2>{{ name }}</h2>
+    <p>{{ description }}</p>
     <div class="card-info-price">
-      <p>Rp 2.500.000</p>
+      <p>Rp {{ price }}</p>
       <span>Rp 3.500.000</span>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 
 export interface CardData {
   SKU: string;
@@ -15,6 +15,8 @@ export interface CardData {
   price: number;
   rating: number;
   sale: string;
+  previewImg: string;
+  previewDescription: string;
   size: string[];
 }
 export interface RoomsItem {
@@ -33,11 +35,27 @@ export interface CategoryOfProduct {
   providedIn: 'root',
 })
 export class GetDBDataService {
+  public allCategoryData: any[] = [];
+  public LIVING: any[] = [];
+  public DINING: any[] = [];
+  public BEDROOM: any[] = [];
+  public KEYS: any[] = [];
+
   constructor(private _httpClient: HttpClient) {}
 
-  public getData(): Observable<CategoryOfProduct> {
-    return this._httpClient.get<CategoryOfProduct>(
-      'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
-    );
+  public getDataFromDB(): Observable<CategoryOfProduct> {
+    return this._httpClient
+      .get<CategoryOfProduct>(
+        'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
+      )
+      .pipe(shareReplay(1));
+  }
+
+  setData(data: any[]) {
+    this.allCategoryData = data;
+  }
+
+  getData(): any[] {
+    return this.allCategoryData;
   }
 }

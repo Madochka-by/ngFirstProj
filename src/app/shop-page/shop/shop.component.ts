@@ -9,7 +9,15 @@ import { GetDBDataService } from '../service/get-dbdata.service';
 export class ShopComponent implements OnInit {
   constructor(private getDBDataService: GetDBDataService) {}
 
+  public allData: any[] = [];
+
   public ngOnInit(): void {
-    this.getDBDataService.getData().subscribe((res) => console.log(res));
+    this.getDBDataService.getDataFromDB().subscribe((res) => {
+      this.allData = Object.values(res)
+        .flatMap((room: any) => Object.values(room))
+        .flatMap((category: any) => Object.values(category));
+
+      this.getDBDataService.setData(this.allData);
+    });
   }
 }
