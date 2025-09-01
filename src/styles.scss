@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use "variables" as *;
 * {
   padding: 0;
   margin: 0;
@@ -79,4 +79,62 @@ h6 {
 }
 a {
   color: inherit;
+}
+
+.p-paginator {
+  display: flex;
+  gap: 30px;
+}
+.p-paginator .p-paginator-prev.p-disabled,
+.p-paginator .p-paginator-next.p-disabled {
+  opacity: 0;
+}
+
+.p-paginator .p-paginator-next .p-paginator-icon,
+.p-paginator .p-paginator-prev .p-paginator-icon {
+  display: none;
+}
+
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next {
+  background: $color-paginator;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0 50px;
+
+  &:hover {
+    background: #faeede;
+  }
+  &:active {
+    opacity: 0.7;
+  }
+}
+.p-paginator .p-paginator-prev::after {
+  content: "Prev";
+}
+.p-paginator .p-paginator-next::after {
+  content: "Next";
+}
+
+.p-paginator-pages {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.p-paginator-page {
+  background: $color-paginator;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.p-paginator-page.p-highlight {
+  background: $color-primary;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
 }

@@ -27,15 +27,25 @@
   </div>
 </div>
 
-<div class="cards">
-  <ng-container *ngFor="let item of allData">
-    <app-card
-      [price]="item.price"
-      [img]="item.previewImg"
-      [name]="item.name"
-      [description]="item.previewDescription"
-    ></app-card>
-  </ng-container>
+<div class="items">
+  <div class="items-cards">
+    <ng-container *ngFor="let item of currentData">
+      <app-card
+        [price]="item.price"
+        [img]="item.previewImg"
+        [name]="item.name"
+        [description]="item.previewDescription"
+      ></app-card>
+    </ng-container>
+  </div>
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="8"
+    [totalRecords]="allData.length"
+    [pageLinkSize]="3"
+    [showFirstLastIcon]="false"
+  ></p-paginator>
 </div>
 
 <app-onfooter></app-onfooter>
