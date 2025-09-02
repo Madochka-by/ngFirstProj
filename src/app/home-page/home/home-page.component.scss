@@ -1,0 +1,470 @@
+@use "variables" as *;
+
+.banner {
+  background-image: url("/assets/img/scandinavian-interior-mockup-wall-decal-background 1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20vh 30px 15vh 0;
+
+  &-item {
+    background: #fff3e3;
+    display: flex;
+    flex-direction: column;
+    padding: 8vh 4vw;
+    border-radius: 10px;
+    gap: 10vh;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: #333333;
+
+      &__book {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      h1 {
+        color: $color-primary;
+        font-weight: 700;
+        font-size: 52px;
+      }
+
+      &__treating {
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+    button {
+      width: 220px;
+      height: 75px;
+      background: $color-primary;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  margin-top: 5vh;
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+      color: $color-darkGrey;
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    p {
+      color: #666666;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+
+  &-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 10vw;
+    gap: 20px;
+    width: 100%;
+
+    &-card {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      img {
+        transition: 0.5s;
+        width: 100%;
+
+        &:hover {
+          scale: 1.05;
+        }
+      }
+
+      p {
+        color: $color-darkGrey;
+        font-weight: 600;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.products {
+  width: 100%;
+  padding: 7vh 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+
+  h1 {
+    font-size: 40px;
+    color: $color-darkGrey;
+    font-weight: 700;
+  }
+
+  &__btn {
+    background: transparent;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    font-weight: 600;
+    padding: 5px 5vw;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+  }
+
+  &-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+    &-card {
+      background: #f4f5f7;
+      position: relative;
+
+      .overlay {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.3);
+        inset: 0;
+        z-index: 1;
+        transition: 0.2s ease-in-out;
+        opacity: 0;
+      }
+
+      &-frame {
+        width: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+        }
+
+        &-hover {
+          width: 100%;
+          top: 65%;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          z-index: 111;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          i {
+            color: white;
+            display: flex;
+            gap: 5px;
+            cursor: pointer;
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            &:active {
+              opacity: 0.9;
+            }
+
+            span {
+              font-weight: 600;
+              font-family: poppins;
+            }
+          }
+
+          button {
+            background: white;
+            padding: 10px 5vw;
+            color: $color-primary;
+            font-weight: 600;
+
+            &:hover {
+              background: rgb(233, 232, 232);
+            }
+
+            &:active {
+              opacity: 0.9;
+            }
+          }
+
+          &-item {
+            display: flex;
+            gap: 40px;
+          }
+        }
+      }
+
+      &-info {
+        padding: 20px 10px 35px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        h2 {
+          color: $color-darkGrey;
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        p {
+          color: #898989;
+          font-weight: 500;
+        }
+
+        &-price {
+          display: flex;
+          gap: 10px;
+
+          p {
+            color: $color-darkGrey;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          span {
+            text-decoration: line-through;
+            color: #b0b0b0;
+            font-size: 16px;
+            font-weight: 400;
+          }
+        }
+      }
+
+      &:hover {
+        .overlay {
+          opacity: 1;
+        }
+
+        .products-items-card-frame-hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.inspirations {
+  background: #fcf8f3;
+  position: relative;
+
+  .arrow {
+    border-radius: 50px;
+    background: white;
+    position: absolute;
+    color: $color-primary;
+    top: 40%;
+    right: 2vw;
+    z-index: 11111;
+    box-shadow: 0px 4px 14px 1px #00000029;
+
+    i {
+      padding: 10px 10px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+  }
+
+  .margin {
+    padding: 40px 0 40px 7vw;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  &-info {
+    width: 100%;
+
+    p {
+      font-weight: 500;
+      color: #616161;
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: $color-darkGrey;
+    }
+
+    button {
+      background: $color-primary;
+      font-weight: 600;
+      color: white;
+      padding: 10px 30px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &-slider {
+    width: 110%;
+    overflow: hidden;
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-self: flex-start;
+
+    &-current {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .currentslide {
+      color: $color-primary;
+      border: 1px solid $color-primary;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    &-wrapper {
+      display: flex;
+      gap: 20px;
+      width: 200%;
+      height: 65vh;
+
+      img {
+        height: 100%;
+        width: 25vw;
+        object-fit: fill;
+      }
+    }
+  }
+
+  &-curslide {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    align-items: flex-end;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      transition: opacity 0.3s;
+    }
+
+    &-content {
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      padding: 20px;
+
+      &-info {
+        backdrop-filter: blur(3px);
+        background: rgba(255, 255, 255, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 5vh;
+
+        p {
+          color: #616161;
+          font-weight: 500;
+        }
+
+        h1 {
+          font-size: 28px;
+          font-weight: 600;
+          color: $color-darkGrey;
+        }
+      }
+
+      i {
+        color: white;
+      }
+
+      button {
+        width: 50px;
+        height: 50px;
+        background: $color-primary;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+.funiro {
+  margin: 20vh 0 7vh 0;
+  background-image: url("/assets/img/FurniroFurnitureBackGround.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &-text {
+    top: -70px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    p {
+      color: #616161;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    h1 {
+      color: $color-darkGrey;
+      font-size: 40px;
+      font-weight: 700;
+    }
+  }
+}

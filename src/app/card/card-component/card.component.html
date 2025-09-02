@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="overlay"></div>
+  <div class="card-frame">
+    <img [src]="img" alt="" />
+    <div class="card-frame-hover">
+      <button>Add to cart</button>
+      <div class="card-frame-hover-item">
+        <i class="pi pi-share-alt"><span>Share</span></i>
+        <i class="pi pi-arrow-right-arrow-left"><span>Compare</span></i>
+        <i class="pi pi-heart"><span>Like</span></i>
+      </div>
+    </div>
+  </div>
+  <div class="card-info">
+    <h2>{{ name }}</h2>
+    <p>{{ description }}</p>
+    <div class="card-info-price">
+      <p>Rp {{ price }}</p>
+      <span>Rp 3.500.000</span>
+    </div>
+  </div>
+</div>
