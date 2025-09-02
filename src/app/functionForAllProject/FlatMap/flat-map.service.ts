@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import {
+  CardData,
+  CategoryOfProduct,
+  RoomsItem,
+} from 'src/app/shop-page/service/get-dbdata.service';
 
 @Injectable({
   providedIn: 'root',
@@ -6,10 +11,9 @@ import { Injectable } from '@angular/core';
 export class FlatMapService {
   constructor() {}
 
-  bringingDataIntoLine(arrayData: any[]): any {
-    const data$ = Object.values(arrayData)
-      .flatMap((room: any) => Object.values(room))
-      .flatMap((category: any) => Object.values(category));
-    return data$;
+  public bringingDataIntoLine(arrayData: CategoryOfProduct): CardData[] {
+    return Object.values(arrayData)
+      .flatMap((room: RoomsItem) => Object.values(room))
+      .flatMap((category: CardData) => Object.values(category));
   }
 }

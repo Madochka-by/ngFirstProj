@@ -107,15 +107,18 @@
 }
 
 .items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10vh 5vw;
-  gap: 50px;
+  &-container {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vh 5vw;
+    gap: 50px;
 
-  &-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    &-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
   }
 }

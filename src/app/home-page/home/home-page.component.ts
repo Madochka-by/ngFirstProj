@@ -1,7 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
-import { GetDBDataService } from 'src/app/shop-page/service/get-dbdata.service';
+import {
+  CardData,
+  GetDBDataService,
+} from 'src/app/shop-page/service/get-dbdata.service';
 
 export interface slide {
   id: number;
@@ -28,15 +32,17 @@ const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
   styleUrls: ['./home-page.component.scss'],
   animations: [fadeIn],
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   constructor(
     private _getData: GetDBDataService,
     private _proccessingFunc: FlatMapService
   ) {}
 
+  public sub!: Subscription;
+
   public path: string = 'home';
 
-  public allData: any[] = [];
+  public allData!: CardData[];
 
   public currentIndex: number = 0;
   public currentIndexCorusel: number = 0;
@@ -68,28 +74,33 @@ export class HomePageComponent implements OnInit {
     },
   ];
 
-  get carouselSlide() {
+  public get carouselSlide(): slide[] {
     return [
       this.slides[(this.currentIndexCorusel + 1) % this.slides.length],
       this.slides[(this.currentIndexCorusel + 2) % this.slides.length],
     ];
   }
 
-  nextSlide(): void {
+  public nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
     this.currentIndexCorusel += 1;
     if (this.currentIndexCorusel === 4) {
       this.currentIndexCorusel = 0;
     }
   }
-  goToSlide(index: number): void {
+  public goToSlide(index: number): void {
     this.currentIndex = index;
     this.currentIndexCorusel = index;
   }
 
-  ngOnInit(): void {
-    this._getData.getData().subscribe((res: any) => {
+  public ngOnInit(): void {
+    this.sub = this._getData.getData().subscribe((res: any) => {
       this.allData = this._proccessingFunc.bringingDataIntoLine(res);
+      console.log(this.allData);
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

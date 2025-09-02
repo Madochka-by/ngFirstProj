@@ -13,7 +13,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "SS001",
               name: "Asgard Sofa",
-              price: 250,
+              price: 250000000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -41,7 +41,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "SS002",
               name: "Valhalla Sofa",
-              price: 320,
+              price: 320000,
               rating: 4.8,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -63,13 +63,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview3.png",
               previewDescription: "Elegant family sofa",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
             {
               id: 2,
               SKU: "SS003",
               name: "Odin Sofa",
-              price: 280,
+              price: 28000000,
               rating: 4.3,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -91,7 +91,7 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview3.png",
               previewDescription: "Sleek minimal couch",
-              sale: "/assets/img/sale50.png",
+              sale: "50",
             },
           ],
           chairs: [
@@ -99,7 +99,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "SS004",
               name: "Nordic Chair",
-              price: 120,
+              price: 1200000,
               rating: 4.6,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -127,7 +127,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "SS005",
               name: "Loki Chair",
-              price: 140,
+              price: 140000000,
               rating: 4.4,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -155,7 +155,7 @@ addButton.addEventListener("click", () => {
               id: 2,
               SKU: "SS006",
               name: "Freya Chair",
-              price: 160,
+              price: 160000,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -177,7 +177,7 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview6.png",
               previewDescription: "Minimalist dining look",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
           ],
           tables: [
@@ -185,7 +185,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "SS007",
               name: "Midgard Table",
-              price: 450,
+              price: 4500000,
               rating: 4.9,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -207,13 +207,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview1.png",
               previewDescription: "Small bedside table",
-              sale: "/assets/img/sale50.png",
+              sale: "50",
             },
             {
               id: 1,
               SKU: "SS008",
               name: "Thor Table",
-              price: 520,
+              price: 5200000,
               rating: 4.8,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -241,7 +241,7 @@ addButton.addEventListener("click", () => {
               id: 2,
               SKU: "SS009",
               name: "Frigg Table",
-              price: 380,
+              price: 38000000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -273,7 +273,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "LS001",
               name: "Zenith Sofa",
-              price: 600,
+              price: 650000000,
               rating: 4.9,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -295,13 +295,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview4.png",
               previewDescription: "Cozy small sofa",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
             {
               id: 1,
               SKU: "LS002",
               name: "Aurora Sofa",
-              price: 550,
+              price: 55000000,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -329,7 +329,7 @@ addButton.addEventListener("click", () => {
               id: 2,
               SKU: "LS003",
               name: "Eclipse Sofa",
-              price: 700,
+              price: 7000000,
               rating: 5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -359,7 +359,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "LC001",
               name: "Atlas Chair",
-              price: 180,
+              price: 1800000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -387,7 +387,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "LC002",
               name: "Helios Chair",
-              price: 220,
+              price: 220000,
               rating: 4.6,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -415,7 +415,7 @@ addButton.addEventListener("click", () => {
               id: 2,
               SKU: "LC003",
               name: "Eos Chair",
-              price: 200,
+              price: 2000000,
               rating: 4.4,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -437,7 +437,7 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview3.png",
               previewDescription: "Tufted fabric chair",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
           ],
           tables: [
@@ -445,7 +445,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "LT001",
               name: "Orion Table",
-              price: 620,
+              price: 62070000,
               rating: 4.8,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -473,7 +473,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "LT002",
               name: "Horizon Table",
-              price: 750,
+              price: 750120500,
               rating: 5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -495,13 +495,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview5.png",
               previewDescription: "Minimalist table style",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
             {
               id: 2,
               SKU: "LT003",
               name: "Nova Table",
-              price: 500,
+              price: 5002200,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -523,7 +523,7 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview6.png",
               previewDescription: "Spacious dining surface",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
           ],
         },
@@ -533,7 +533,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "BS001",
               name: "Dream Sofa",
-              price: 400,
+              price: 4000000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -561,7 +561,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "BS002",
               name: "Serenity Sofa",
-              price: 450,
+              price: 4501000,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -589,7 +589,7 @@ addButton.addEventListener("click", () => {
               id: 2,
               SKU: "BS003",
               name: "Luna Sofa",
-              price: 500,
+              price: 500000,
               rating: 4.8,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -619,7 +619,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "BC001",
               name: "Selene Chair",
-              price: 180,
+              price: 1800000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -647,7 +647,7 @@ addButton.addEventListener("click", () => {
               id: 1,
               SKU: "BC002",
               name: "Aurora Chair",
-              price: 200,
+              price: 20000000,
               rating: 4.6,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -669,13 +669,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview5.png",
               previewDescription: "Slim modern legs",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
             {
               id: 2,
               SKU: "BC003",
               name: "Luna Chair",
-              price: 220,
+              price: 220111000,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -705,7 +705,7 @@ addButton.addEventListener("click", () => {
               id: 0,
               SKU: "BT001",
               name: "Sol Table",
-              price: 350,
+              price: 35000000,
               rating: 4.5,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -727,13 +727,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview1.png",
               previewDescription: "Rustic wooden nightstand",
-              sale: "/assets/img/sale30.png",
+              sale: "30",
             },
             {
               id: 1,
               SKU: "BT002",
               name: "Luna Table",
-              price: 400,
+              price: 4000000,
               rating: 4.6,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
@@ -755,13 +755,13 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview2.png",
               previewDescription: "Modern glossy finish",
-              sale: "/assets/img/sale50.png",
+              sale: "50",
             },
             {
               id: 2,
               SKU: "BT003",
               name: "Aurora Table",
-              price: 450,
+              price: 4505000,
               rating: 4.7,
               content:
                 "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",

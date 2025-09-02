@@ -1,7 +1,7 @@
 <div class="card">
   <div class="overlay"></div>
   <div class="card-frame">
-    <img [src]="img" alt="" />
+    <img class="card-frame__preview" [src]="img" alt="" />
     <div class="card-frame-hover">
       <button>Add to cart</button>
       <div class="card-frame-hover-item">
@@ -10,13 +10,19 @@
         <i class="pi pi-heart"><span>Like</span></i>
       </div>
     </div>
+    <img *ngIf="sale != ''" class="card-frame__sale" [src]="saleImg" />
   </div>
   <div class="card-info">
     <h2>{{ name }}</h2>
     <p>{{ description }}</p>
-    <div class="card-info-price">
-      <p>Rp {{ price }}</p>
-      <span>Rp 3.500.000</span>
+    <div class="card-info-price" *ngIf="sale == ''; else withSale">
+      <p>Rp {{ totalPrice }}</p>
     </div>
+    <ng-template #withSale>
+      <div class="card-info-price">
+        <p>Rp {{ salePrice }}</p>
+        <span>Rp {{ totalPrice }}</span>
+      </div>
+    </ng-template>
   </div>
 </div>
