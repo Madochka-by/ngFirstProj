@@ -3,7 +3,7 @@
 <div class="sortline">
   <div class="sortline-content">
     <div class="sortline-content-icons">
-      <span (click)="isShow = !isShow" class="sortline-content-icons__left"
+      <span class="sortline-content-icons__left"
         ><i class="pi pi-sliders-h"></i>
         <p>Filter</p>
       </span>
@@ -32,16 +32,6 @@
 </div>
 
 <div #items class="items">
-  <!--  -->
-  <div *ngIf="isShow" class="modal">
-    <div class="modal-category">
-      <ul *ngFor="let keys of keysRooms">
-        <p>{{ keys }}</p>
-        <li *ngFor="let products; of"></li>
-      </ul>
-    </div>
-  </div>
-  <!--  -->
   <div class="items-container">
     <div class="items-container-cards">
       <ng-container *ngFor="let item of currentData">
@@ -50,6 +40,7 @@
           [img]="item.previewImg"
           [name]="item.name"
           [description]="item.previewDescription"
+          [sale]="item.sale"
         ></app-card>
       </ng-container>
     </div>
