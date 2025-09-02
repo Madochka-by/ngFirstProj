@@ -3,7 +3,7 @@
 <div class="sortline">
   <div class="sortline-content">
     <div class="sortline-content-icons">
-      <span class="sortline-content-icons__left"
+      <span (click)="isShow = !isShow" class="sortline-content-icons__left"
         ><i class="pi pi-sliders-h"></i>
         <p>Filter</p>
       </span>
@@ -14,7 +14,9 @@
     </div>
     <hr />
     <p>
-      Showing <span>1–8</span> of <span>{{ allData.length }}</span> results
+      Showing
+      <span>{{ currentPageCount }} – {{ currentPageCountLeft }} </span> of
+      <span>{{ allData.length }}</span> results
     </p>
   </div>
   <div class="sortline-inputs">
@@ -29,25 +31,37 @@
   </div>
 </div>
 
-<div class="items">
-  <div class="items-cards">
-    <ng-container *ngFor="let item of currentData">
-      <app-card
-        [price]="item.price"
-        [img]="item.previewImg"
-        [name]="item.name"
-        [description]="item.previewDescription"
-      ></app-card>
-    </ng-container>
+<div #items class="items">
+  <!--  -->
+  <div *ngIf="isShow" class="modal">
+    <div class="modal-category">
+      <ul *ngFor="let keys of keysRooms">
+        <p>{{ keys }}</p>
+        <li *ngFor="let products; of"></li>
+      </ul>
+    </div>
   </div>
-  <p-paginator
-    (onPageChange)="onPageChange($event)"
-    [first]="1"
-    [rows]="8"
-    [totalRecords]="allData.length"
-    [pageLinkSize]="3"
-    [showFirstLastIcon]="false"
-  ></p-paginator>
+  <!--  -->
+  <div class="items-container">
+    <div class="items-container-cards">
+      <ng-container *ngFor="let item of currentData">
+        <app-card
+          [price]="item.price"
+          [img]="item.previewImg"
+          [name]="item.name"
+          [description]="item.previewDescription"
+        ></app-card>
+      </ng-container>
+    </div>
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="1"
+      [rows]="8"
+      [totalRecords]="allData.length"
+      [pageLinkSize]="3"
+      [showFirstLastIcon]="false"
+    ></p-paginator>
+  </div>
 </div>
 
 <app-onfooter></app-onfooter>

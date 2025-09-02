@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 
 export interface CardData {
@@ -35,33 +35,16 @@ export interface CategoryOfProduct {
   providedIn: 'root',
 })
 export class GetDBDataService {
-  public allCategoryData: any[] = [];
-  public LIVING: any[] = [];
-  public DINING: any[] = [];
-  public BEDROOM: any[] = [];
-  public KEYS: any[] = [];
+  private data$!: Observable<CategoryOfProduct>;
 
-  private data$: Observable<CategoryOfProduct>;
+  constructor(private _httpClient: HttpClient) {}
 
-  constructor(private _httpClient: HttpClient) {
+  public getData(): Observable<CategoryOfProduct> {
     this.data$ = this._httpClient
       .get<CategoryOfProduct>(
         'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
       )
       .pipe(shareReplay(1));
-  }
-
-  getData(): Observable<CategoryOfProduct> {
     return this.data$;
   }
 }
-
-// public ngOnInit(): void {
-//   this.getDBDataService.getDataFromDB().subscribe((res) => {
-//     this.allData = Object.values(res)
-//       .flatMap((room: any) => Object.values(room))
-//       .flatMap((category: any) => Object.values(category));
-
-//     this.getDBDataService.setData(this.allData);
-//   });
-// }
