@@ -7,6 +7,6 @@ import { CardModule } from '../card/card.module';
 @NgModule({
   declarations: [HomePageComponent],
   exports: [HomePageComponent, HomePageRouting],
-  imports: [CommonModule, CardModule],
+  imports: [CommonModule, CardModule, HomePageRouting],
 })
 export class HomePageModule {}

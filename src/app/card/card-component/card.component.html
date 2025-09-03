@@ -18,6 +18,7 @@
     <div class="card-info-price" *ngIf="sale == ''; else withSale">
       <p>Rp {{ totalPrice }}</p>
     </div>
+
     <ng-template #withSale>
       <div class="card-info-price">
         <p>Rp {{ salePrice }}</p>

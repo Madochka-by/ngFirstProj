@@ -49,7 +49,9 @@
       ></app-card>
     </ng-container>
   </div>
-  <button class="products__btn">Show More</button>
+  <button *ngIf="allData?.length" class="products__btn" routerLink="/shop">
+    Show More
+  </button>
 </div>
 
 <div class="inspirations">

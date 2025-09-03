@@ -28,6 +28,5 @@ export class CardComponent implements OnInit {
       this.salePrice = this.set(this.price - (+this.sale! / 100) * this.price);
       this.saleImg = `/assets/img/sale${this.sale}.png`;
     }
-    console.log(this.saleImg);
   }
 }

@@ -3,7 +3,9 @@
 <div class="sortline">
   <div class="sortline-content">
     <div class="sortline-content-icons">
-      <span class="sortline-content-icons__left"
+      <span
+        (click)="isShow = !isShow; ngAfterViewInit()"
+        class="sortline-content-icons__left"
         ><i class="pi pi-sliders-h"></i>
         <p>Filter</p>
       </span>
@@ -16,7 +18,7 @@
     <p>
       Showing
       <span>{{ currentPageCount }} – {{ currentPageCountLeft }} </span> of
-      <span>{{ allData.length }}</span> results
+      <span *ngIf="allData?.length">{{ allData.length }}</span> results
     </p>
   </div>
   <div class="sortline-inputs">
@@ -32,8 +34,52 @@
 </div>
 
 <div #items class="items">
+  <div *ngIf="isShow" class="items-filter">
+    <div class="items-filter-container">
+      <h1>Shop By Room</h1>
+      <ng-container *ngFor="let room of shopByRoom | keyvalue; let i = index">
+        <p (click)="isShowRoom[i] = !isShowRoom[i]">{{ room.key }}</p>
+        <ng-container *ngFor="let prod of room.value">
+          <ul *ngIf="isShowRoom[i]">
+            <li>{{ prod }}</li>
+          </ul>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="items-filter-container">
+      <h1>Colors</h1>
+      <div class="items-filter-container-colors">
+        <ng-container *ngFor="let color of colorsFilter; let i = index">
+          <i
+            (click)="isShowColor[i] = !isShowColor[i]; focusColor(i)"
+            #colors
+            [style.background]="color"
+          ></i>
+        </ng-container>
+      </div>
+    </div>
+    <div class="items-filter-container">
+      <h1>Price</h1>
+      <ng-container *ngFor="let price of priceFilter">
+        <div class="items-filter-container-line">
+          <input type="checkbox" />
+          {{ price.min }} Rp - {{ price.max }} Rp
+        </div>
+      </ng-container>
+    </div>
+    <div class="items-filter-container">
+      <h1>Rating</h1>
+      <ng-container *ngFor="let rating of ratingFilter">
+        <div class="items-filter-container-line">
+          <input type="checkbox" />
+          <p>{{ rating }}</p>
+          <i class="pi pi-star-fill"></i>
+        </div>
+      </ng-container>
+    </div>
+  </div>
   <div class="items-container">
-    <div class="items-container-cards">
+    <div #grid class="items-container-cards">
       <ng-container *ngFor="let item of currentData">
         <app-card
           [price]="item.price"
@@ -45,6 +91,7 @@
       </ng-container>
     </div>
     <p-paginator
+      *ngIf="allData?.length"
       (onPageChange)="onPageChange($event)"
       [first]="1"
       [rows]="8"
