@@ -1,0 +1,153 @@
+<div class="navigation"></div>
+<div class="grid">
+  <div class="grid-pictures">
+    <div class="grid-pictures-line">
+      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
+      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
+      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
+      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
+    </div>
+    <div class="grid-pictures-main">
+      <img src="/assets/img/Asgaard sofa 3.png" alt="" />
+    </div>
+  </div>
+  <div class="grid-information">
+    <h1>Asgaard sofa</h1>
+    <h2>Rs. 250,000.00</h2>
+    <span class="line">
+      <i class="pi pi-star-fill"></i> <i class="pi pi-star-fill"></i>
+      <hr />
+      <span class="color">5 customer Review</span>
+    </span>
+    <h3>
+      Setting the bar as one of the loudest speakers in its class, the Kilburn
+      is a compact, stout-hearted hero with a well-balanced audio which boasts a
+      clear midrange and extended highs for a sound.
+    </h3>
+    <div class="grid-information-block">
+      <span class="color">size</span>
+      <div class="grid-information-block-line">
+        <button id="square">L</button>
+        <button id="square">XL</button>
+        <button id="square">XS</button>
+      </div>
+    </div>
+    <div class="grid-information-block">
+      <span class="color">Color</span>
+      <div class="grid-information-block-line">
+        <span [style.background]="'#816DFA'" id="circle"></span>
+        <span [style.background]="'#000000'" id="circle"></span>
+        <span [style.background]="'#B88E2F'" id="circle"></span>
+      </div>
+    </div>
+    <div class="grid-information-buttons">
+      <div class="grid-information-buttons-incdec">
+        <button (click)="MinusFunc()" class="pi pi-minus"></button>
+        <p>{{ countOfProduct }}</p>
+        <button (click)="plusFunc()" class="pi pi-plus"></button>
+      </div>
+      <input type="submit" value="Add To Cart" />
+      <button class="custom"><i class="pi pi-plus"></i> Compare</button>
+    </div>
+  </div>
+  <div class="grid-another">
+    <div class="grid-another-column">
+      <ul>
+        <li>SKU</li>
+        <li>Category</li>
+        <li>Tags</li>
+        <li>Share</li>
+      </ul>
+    </div>
+    <div class="grid-another-column">
+      <ul>
+        <li>:</li>
+        <li>:</li>
+        <li>:</li>
+        <li>:</li>
+      </ul>
+    </div>
+    <div class="grid-another-column">
+      <ul>
+        <li>SS001</li>
+        <li>Sofas</li>
+        <li>Sofa, Chair, Home, Shop</li>
+        <li>
+          <i class="pi pi-facebook"></i> <i class="pi pi-linkedin"></i>
+          <i class="pi pi-twitter"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="description">
+  <div class="description-heading">
+    <ng-container
+      *ngFor="
+        let tit of ['Description', 'Additional Information', 'Reviews [5]'];
+        let i = index
+      "
+    >
+      <a
+        (click)="$event.preventDefault(); activeTit(i)"
+        [class.activeTit]="activeIndex === i"
+        href=""
+        >{{ tit }}</a
+      >
+    </ng-container>
+  </div>
+  <div class="description-info">
+    <ng-container [ngSwitch]="activeIndex">
+      <ng-template [ngSwitchCase]="0">
+        <p>
+          Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn
+          portable active stereo speaker takes the unmistakable look and sound
+          of Marshall, unplugs the chords, and takes the show on the road.
+        </p>
+        <p>
+          Weighing in under 7 pounds, the Kilburn is a lightweight piece of
+          vintage styled engineering. Setting the bar as one of the loudest
+          speakers in its class, the Kilburn is a compact, stout-hearted hero
+          with a well-balanced audio which boasts a clear midrange and extended
+          highs for a sound that is both articulate and pronounced. The analogue
+          knobs allow you to fine tune the controls to your personal preferences
+          while the guitar-influenced leather strap enables easy and stylish
+          travel.
+        </p>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <p>
+          Weighing in under 7 pounds, the Kilburn is a lightweight piece of
+          vintage styled engineering. Setting the bar as one of the loudest
+          speakers in its class, the Kilburn is a compact, stout-hearted hero
+          with a well-balanced audio which boasts a clear midrange and extended
+          highs for a sound that is both articulate and pronounced. The analogue
+          knobs allow you to fine tune the controls to your personal preferences
+          while the guitar-influenced leather strap enables easy and stylish
+          travel.
+        </p>
+      </ng-template>
+    </ng-container>
+  </div>
+  <div class="description-pictures">
+    <img src="/assets/img/sofas for prod.png" alt="" />
+    <img src="/assets/img/sofas for prod2.png" alt="" />
+  </div>
+</div>
+
+<div *ngIf="allData?.length" class="related">
+  <h1>Related Products</h1>
+  <div class="related-product">
+    <ng-container *ngFor="let item of viewProduct">
+      <app-card
+        [price]="item.price"
+        [img]="item.previewImg"
+        [name]="item.name"
+        [description]="item.previewDescription"
+        [sale]="item.sale"
+      ></app-card>
+    </ng-container>
+  </div>
+  <button class="related__btn" routerLink="/shop">Show More</button>
+</div>

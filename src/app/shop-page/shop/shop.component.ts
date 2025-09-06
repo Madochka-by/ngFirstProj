@@ -104,11 +104,6 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  // public isShowFilters(flag: boolean): void {
-  //   if (flag) {
-  //     this.grid.nativeElement.style.display = 'grid';
-  //   }
-  // }
   ngAfterViewInit(): void {
     if (this.isShow) {
       this.items.nativeElement.style.display = 'grid';

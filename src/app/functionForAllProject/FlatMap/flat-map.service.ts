@@ -16,4 +16,8 @@ export class FlatMapService {
       .flatMap((room: RoomsItem) => Object.values(room))
       .flatMap((category: CardData) => Object.values(category));
   }
+
+  // public searchAndViewInfoAboutProduct(): CardData[]{
+  //   return
+  // }
 }

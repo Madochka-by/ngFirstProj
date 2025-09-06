@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
+import { CardData } from 'src/app/shop-page/service/get-dbdata.service';
 
 @Component({
   selector: 'app-card',
@@ -13,6 +15,8 @@ export class CardComponent implements OnInit {
   @Input() description?: string;
   @Input() sale?: string;
 
+  @Input() obj!: CardData[];
+
   public totalPrice!: string;
   public salePrice!: string;
   public saleImg!: string;
@@ -21,8 +25,15 @@ export class CardComponent implements OnInit {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
+  constructor(private router: Router) {}
+
+  public goToPage(): void {
+    this.router.navigate(['product']);
+  }
+
   ngOnInit(): void {
     this.totalPrice = this.set(this.price);
+    console.log(this.obj);
 
     if (this.sale != '') {
       this.salePrice = this.set(this.price - (+this.sale! / 100) * this.price);

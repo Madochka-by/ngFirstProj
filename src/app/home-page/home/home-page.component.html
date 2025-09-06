@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<div class="products">
+<div *ngIf="allData?.length" class="products">
   <h1>Our Products</h1>
   <div class="products-items">
     <ng-container *ngFor="let item of allData | slice : 0 : 8">
@@ -49,9 +49,7 @@
       ></app-card>
     </ng-container>
   </div>
-  <button *ngIf="allData?.length" class="products__btn" routerLink="/shop">
-    Show More
-  </button>
+  <button class="products__btn" routerLink="/shop">Show More</button>
 </div>
 
 <div class="inspirations">

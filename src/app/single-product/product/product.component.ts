@@ -1,0 +1,52 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
+import {
+  CardData,
+  CategoryOfProduct,
+  GetDBDataService,
+} from 'src/app/shop-page/service/get-dbdata.service';
+
+@Component({
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
+})
+export class ProductComponent implements OnInit, OnDestroy {
+  public countOfProduct: number = 1;
+  public activeIndex: number = 0;
+  public allData!: CardData[];
+  public viewProduct!: CardData[];
+  public CurrentProduct!: CardData[];
+  public sub!: Subscription;
+
+  public plusFunc(): void {
+    this.countOfProduct += 1;
+  }
+
+  public MinusFunc(): void {
+    if (this.countOfProduct > 1) {
+      this.countOfProduct -= 1;
+    }
+  }
+
+  public activeTit(i: number): void {
+    this.activeIndex = i;
+  }
+
+  constructor(
+    private _proccessingFunc: FlatMapService,
+    private _getData: GetDBDataService
+  ) {}
+
+  public ngOnInit(): void {
+    this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
+      this.allData = this._proccessingFunc.bringingDataIntoLine(res);
+      this.viewProduct = this.allData.slice(0, 4);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+}

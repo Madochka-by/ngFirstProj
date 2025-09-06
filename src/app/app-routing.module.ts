@@ -20,10 +20,19 @@ const routes: Routes = [
         (m) => m.ContactPageModule
       ),
   },
+  {
+    path: 'product',
+    loadChildren: () =>
+      import('./single-product/single-product.module').then(
+        (m) => m.SingleProductModule
+      ),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
