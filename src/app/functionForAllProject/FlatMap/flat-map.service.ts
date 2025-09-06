@@ -9,6 +9,8 @@ import {
   providedIn: 'root',
 })
 export class FlatMapService {
+  private curDat!: CardData[];
+
   constructor() {}
 
   public bringingDataIntoLine(arrayData: CategoryOfProduct): CardData[] {
@@ -17,7 +19,17 @@ export class FlatMapService {
       .flatMap((category: CardData) => Object.values(category));
   }
 
-  // public searchAndViewInfoAboutProduct(): CardData[]{
-  //   return
-  // }
+  public currentProductForCart(obj: CardData[], name: string): void {
+    obj
+      .map((index) => index)
+      .map((value) => {
+        if (value.name === name) {
+          this.curDat = Object.values(value);
+        }
+      });
+  }
+
+  public getCurrentProductForCart(): CardData[] {
+    return this.curDat;
+  }
 }

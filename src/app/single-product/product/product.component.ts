@@ -44,6 +44,10 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.allData = this._proccessingFunc.bringingDataIntoLine(res);
       this.viewProduct = this.allData.slice(0, 4);
     });
+
+    this.CurrentProduct = this._proccessingFunc.getCurrentProductForCart();
+
+    console.log(this.CurrentProduct);
   }
 
   ngOnDestroy(): void {

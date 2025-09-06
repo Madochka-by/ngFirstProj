@@ -4,10 +4,9 @@ import { ProductComponent } from './product/product.component';
 import { SingleProductRouting } from './single-product-routing.module';
 import { PaginatorModule } from 'primeng/paginator';
 import { CardModule } from 'src/app/card/card.module';
-import { ViewProductComponent } from './view-product/view-product.component';
 
 @NgModule({
-  declarations: [ProductComponent, ViewProductComponent],
+  declarations: [ProductComponent],
   exports: [ProductComponent, SingleProductRouting],
   imports: [
     CommonModule,

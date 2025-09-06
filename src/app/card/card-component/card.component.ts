@@ -16,6 +16,7 @@ export class CardComponent implements OnInit {
   @Input() sale?: string;
 
   @Input() obj!: CardData[];
+  public currentProduct!: CardData[];
 
   public totalPrice!: string;
   public salePrice!: string;
@@ -25,15 +26,16 @@ export class CardComponent implements OnInit {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private currentProd: FlatMapService) {}
 
   public goToPage(): void {
     this.router.navigate(['product']);
+
+    this.currentProd.currentProductForCart(this.obj, this.name!);
   }
 
   ngOnInit(): void {
     this.totalPrice = this.set(this.price);
-    console.log(this.obj);
 
     if (this.sale != '') {
       this.salePrice = this.set(this.price - (+this.sale! / 100) * this.price);
