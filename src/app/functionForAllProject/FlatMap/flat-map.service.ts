@@ -9,7 +9,7 @@ import {
   providedIn: 'root',
 })
 export class FlatMapService {
-  private curDat!: CardData[];
+  private curDat!: CardData;
 
   constructor() {}
 
@@ -21,15 +21,15 @@ export class FlatMapService {
 
   public currentProductForCart(obj: CardData[], name: string): void {
     obj
-      .map((index) => index)
-      .map((value) => {
+      .flatMap((index: CardData) => index)
+      .flatMap((value: CardData) => {
         if (value.name === name) {
-          this.curDat = Object.values(value);
+          this.curDat = value;
         }
       });
   }
 
-  public getCurrentProductForCart(): CardData[] {
+  public getCurrentProductForCart(): CardData {
     return this.curDat;
   }
 }

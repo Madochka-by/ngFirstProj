@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   public activeIndex: number = 0;
   public allData!: CardData[];
   public viewProduct!: CardData[];
-  public CurrentProduct!: CardData[];
+  public CurrentProduct!: CardData;
   public sub!: Subscription;
 
   public plusFunc(): void {
