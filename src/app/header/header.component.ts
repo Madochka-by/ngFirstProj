@@ -7,6 +7,10 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import {
+  LocalStorageService,
+  storage,
+} from '../functionForAllProject/lcStorage/local-storage.service';
 
 const show = transition(':enter', [
   style({ transform: 'translateX(100%)' }),
@@ -27,7 +31,8 @@ const transl = trigger('traslate', [show, unShow]);
   animations: [transl],
 })
 export class HeaderComponent implements OnInit, AfterViewChecked {
-  public isShow = true;
+  public isShow = false;
+  public storageData!: storage[];
 
   @ViewChild('dropDown') dropDown!: ElementRef<HTMLElement>;
 
@@ -44,7 +49,12 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  ngOnInit(): void {}
+  constructor(private storage: LocalStorageService) {}
+
+  ngOnInit(): void {
+    this.storageData = this.storage.getItem();
+    console.log(this.storageData);
+  }
 
   ngAfterViewChecked(): void {}
 }

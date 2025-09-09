@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
+import { LocalStorageService } from 'src/app/functionForAllProject/lcStorage/local-storage.service';
 import {
   CardData,
   CategoryOfProduct,
@@ -38,7 +39,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   constructor(
     private _proccessingFunc: FlatMapService,
-    private _getData: GetDBDataService
+    private _getData: GetDBDataService,
+    private _storage: LocalStorageService
   ) {}
 
   public ngOnInit(): void {
@@ -51,6 +53,10 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.puctures = this.CurrentProduct.img.map((path: string) =>
       path.replace(/\s+/g, '-')
     );
+  }
+
+  public set(): void {
+    this._storage.setItem(this.CurrentProduct);
   }
 
   public goToSlide(index: number): void {

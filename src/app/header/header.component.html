@@ -38,20 +38,24 @@
       </div>
       <div class="dropdown-items">
         <div class="dropdown-items-slider">
-          <div class="dropdown-items-slider-product">
-            <div class="dropdown-items-slider-product-picture">
-              <img src="/assets/img/Asgard-sofa-2.png" alt="" />
+          <ng-container *ngFor="let data of storageData">
+            <div class="dropdown-items-slider-product">
+              <ng-container>
+                <div class="dropdown-items-slider-product-picture">
+                  <img [src]="data.img" alt="" />
+                </div>
+                <div class="dropdown-items-slider-product-info">
+                  <h1>{{ data.name }}</h1>
+                  <span
+                    ><p>{{ data.amount }}</p>
+                    <p>X</p>
+                    <h2>Rs. {{ data.price }}</h2></span
+                  >
+                </div>
+                <button><i class="pi pi-crest"></i></button>
+              </ng-container>
             </div>
-            <div class="dropdown-items-slider-product-info">
-              <h1>Asgaard sofa</h1>
-              <span
-                ><p>1</p>
-                <p>X</p>
-                <h2>Rs. 250,000.00</h2></span
-              >
-            </div>
-            <button><i class="pi pi-crest"></i></button>
-          </div>
+          </ng-container>
         </div>
       </div>
       <div class="dropdown-prices">
