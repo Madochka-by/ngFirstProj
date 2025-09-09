@@ -21,6 +21,7 @@ import { FlatMapService } from './functionForAllProject/FlatMap/flat-map.service
     TableModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ButtonModule,
   ],
   providers: [GetDBDataService, FlatMapService],
   bootstrap: [AppComponent],

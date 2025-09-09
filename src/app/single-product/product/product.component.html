@@ -2,13 +2,15 @@
 <div class="grid">
   <div class="grid-pictures">
     <div class="grid-pictures-line">
-      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
-      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
-      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
-      <img src="/assets/img/Asgaard sofa 1.png" alt="" />
+      <img
+        *ngFor="let pic of puctures; let i = index"
+        [src]="pic"
+        (click)="goToSlide(i)"
+        alt=""
+      />
     </div>
     <div class="grid-pictures-main">
-      <img src="/assets/img/Asgaard sofa 3.png" alt="" />
+      <img [src]="puctures[currentIndexPicture]" alt="" />
     </div>
   </div>
   <div class="grid-information">

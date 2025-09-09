@@ -19,15 +19,32 @@ import {
 
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { Subscription } from 'rxjs';
+import { animate, style, transition, trigger } from '@angular/animations';
+
+const show = transition(':enter', [
+  style({ opacity: 0, transform: 'translateX(-100%)' }),
+  animate('100ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
+]);
+
+const leave = transition(':leave', [
+  style({ opacity: 1, transform: 'translateX(0)' }),
+  animate(
+    '100ms ease-in',
+    style({ opacity: 0, transform: 'translateX(-100%)' })
+  ),
+]);
+
+const fadeIn = trigger('fadeIn', [show, leave]);
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
+  animations: [fadeIn],
 })
 export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
   public allData!: CardData[];
-  public currentData!: CardData[];
+  public currentDataPage!: CardData[];
 
   public colorsFilter!: string[];
   public priceFilter!: filterPriceTotal[];
@@ -71,7 +88,7 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe((res: CategoryOfProduct) => {
         this.allData = this._proccessingFunc.bringingDataIntoLine(res);
 
-        this.currentData = this.allData.slice(0, 8);
+        this.currentDataPage = this.allData.slice(0, 8);
       });
 
     this.subGetFiltes = this._getData.getFilters().subscribe((res: filters) => {
@@ -84,7 +101,7 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
   public onPageChange(event: any): void {
     const start = event.first;
     const end = start + event.rows;
-    this.currentData = this.allData.slice(start, end);
+    this.currentDataPage = this.allData.slice(start, end);
 
     this.items.nativeElement.scrollIntoView({
       behavior: 'smooth',

@@ -13,11 +13,13 @@ import {
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit, OnDestroy {
+  public currentIndexPicture = 0;
   public countOfProduct: number = 1;
   public activeIndex: number = 0;
   public allData!: CardData[];
   public viewProduct!: CardData[];
   public CurrentProduct!: CardData;
+  public puctures!: string[];
   public sub!: Subscription;
 
   public plusFunc(): void {
@@ -46,8 +48,20 @@ export class ProductComponent implements OnInit, OnDestroy {
     });
 
     this.CurrentProduct = this._proccessingFunc.getCurrentProductForCart();
+    this.puctures = this.CurrentProduct.img.map((path: string) =>
+      path.replace(/\s+/g, '-')
+    );
+  }
 
-    console.log(this.CurrentProduct);
+  public goToSlide(index: number): void {
+    this.currentIndexPicture = index;
+  }
+
+  public get currentPicture(): string[] {
+    return [
+      this.puctures[(this.currentIndexPicture + 1) % this.puctures.length],
+      this.puctures[(this.currentIndexPicture + 2) % this.puctures.length],
+    ];
   }
 
   ngOnDestroy(): void {

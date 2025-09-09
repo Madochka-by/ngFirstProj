@@ -8,12 +8,6 @@ import { CardModule } from 'src/app/card/card.module';
 @NgModule({
   declarations: [ProductComponent],
   exports: [ProductComponent, SingleProductRouting],
-  imports: [
-    CommonModule,
-    SingleProductRouting,
-    PaginatorModule,
-    CardModule,
-    CardModule,
-  ],
+  imports: [CommonModule, SingleProductRouting, PaginatorModule, CardModule],
 })
 export class SingleProductModule {}
