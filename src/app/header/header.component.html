@@ -38,22 +38,22 @@
       </div>
       <div class="dropdown-items">
         <div class="dropdown-items-slider">
-          <ng-container *ngFor="let data of storageData">
+          <ng-container *ngFor="let data of storageData; let i = index">
             <div class="dropdown-items-slider-product">
-              <ng-container>
-                <div class="dropdown-items-slider-product-picture">
-                  <img [src]="data.img" alt="" />
-                </div>
-                <div class="dropdown-items-slider-product-info">
-                  <h1>{{ data.name }}</h1>
-                  <span
-                    ><p>{{ data.amount }}</p>
-                    <p>X</p>
-                    <h2>Rs. {{ data.price }}</h2></span
-                  >
-                </div>
-                <button><i class="pi pi-crest"></i></button>
-              </ng-container>
+              <div class="dropdown-items-slider-product-picture">
+                <img [src]="data.img" alt="" />
+              </div>
+              <div class="dropdown-items-slider-product-info">
+                <h1>{{ data.name }}</h1>
+                <span
+                  ><p>{{ data.amount }}</p>
+                  <p>X</p>
+                  <h2>Rs. {{ data.price }}</h2></span
+                >
+              </div>
+              <button (click)="delItem(data.SKU, i); $event.stopPropagation()">
+                <i class="pi pi-crest"></i>
+              </button>
             </div>
           </ng-container>
         </div>

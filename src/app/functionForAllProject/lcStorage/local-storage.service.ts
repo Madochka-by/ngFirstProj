@@ -49,4 +49,8 @@ export class LocalStorageService {
 
     return this.storageData;
   }
+
+  public deleteItem(indexItem: string): void {
+    localStorage.removeItem(indexItem);
+  }
 }

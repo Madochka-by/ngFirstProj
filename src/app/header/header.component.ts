@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
 
     if (target.classList.contains('pi-shopping-cart')) {
       this.isShow = true;
+      this.storageData = this.storage.getItem();
       return;
     }
     if (!target.closest('.dropdown')) {
@@ -51,10 +52,12 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
 
   constructor(private storage: LocalStorageService) {}
 
-  ngOnInit(): void {
-    this.storageData = this.storage.getItem();
-    console.log(this.storageData);
+  public delItem(SKU: string, index: number): void {
+    this.storage.deleteItem(SKU);
+    this.storageData.splice(index, 1);
   }
+
+  ngOnInit(): void {}
 
   ngAfterViewChecked(): void {}
 }
