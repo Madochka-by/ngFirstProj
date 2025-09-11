@@ -38,18 +38,18 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    public _proccessingFunc: FlatMapService,
+    public _func: FlatMapService,
     private _getData: GetDBDataService,
     private _storage: LocalStorageService
   ) {}
 
   public ngOnInit(): void {
     this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
-      this.allData = this._proccessingFunc.bringingDataIntoLine(res);
+      this.allData = this._func.bringingDataIntoLine(res);
       this.viewProduct = this.allData.slice(0, 4);
     });
 
-    this.CurrentProduct = this._proccessingFunc.getCurrentProductForCart();
+    this.CurrentProduct = this._func.getCurrentProductForCart();
     this.puctures = this.CurrentProduct.img.map((path: string) =>
       path.replace(/\s+/g, '-')
     );

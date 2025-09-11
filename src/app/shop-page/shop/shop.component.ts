@@ -79,14 +79,14 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private _getData: GetDBDataService,
-    private _proccessingFunc: FlatMapService
+    private _func: FlatMapService
   ) {}
 
   public ngOnInit(): void {
     this.subGetData = this._getData
       .getData()
       .subscribe((res: CategoryOfProduct) => {
-        this.allData = this._proccessingFunc.bringingDataIntoLine(res);
+        this.allData = this._func.bringingDataIntoLine(res);
 
         this.currentDataPage = this.allData.slice(0, 8);
       });

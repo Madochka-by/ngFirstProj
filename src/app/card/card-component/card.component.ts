@@ -26,17 +26,18 @@ export class CardComponent implements OnInit {
   constructor(
     private _router: Router,
     private _func: FlatMapService,
-    private _localStorage: LocalStorageService
+    private _storage: LocalStorageService
   ) {}
 
   public set(): void {
     this._func.currentProductForCart(this.obj, this.name);
     this.currentProduct = this._func.getCurrentProductForCart();
-    this._localStorage.setItem(this.currentProduct);
+    this._storage.setItem(this.currentProduct);
   }
 
   public goToPage(): void {
     this._router.navigate(['product']);
+    console.log(this.obj);
 
     this._func.currentProductForCart(this.obj, this.name!);
   }

@@ -38,6 +38,12 @@
       </div>
       <div class="dropdown-items">
         <div class="dropdown-items-slider">
+          <p
+            *ngIf="storageData.length == 0"
+            class="dropdown-items-slider-product"
+          >
+            Корзина пуста
+          </p>
           <ng-container *ngFor="let data of storageData; let i = index">
             <div class="dropdown-items-slider-product">
               <div class="dropdown-items-slider-product-picture">
@@ -64,7 +70,9 @@
       </div>
     </div>
     <div class="dropdown-navigate">
-      <button>Cart</button>
+      <button>
+        <a (click)="isShow = false" [routerLink]="['cartBuy']">Cart</a>
+      </button>
       <button>Checkout</button>
       <button>Comparison</button>
     </div>

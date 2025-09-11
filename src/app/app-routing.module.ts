@@ -27,6 +27,13 @@ const routes: Routes = [
         (m) => m.SingleProductModule
       ),
   },
+  {
+    path: 'cartBuy',
+    loadChildren: () =>
+      import('./cart-for-buy/cart-for-buy.module').then(
+        (m) => m.CartForBuyModule
+      ),
+  },
 ];
 
 @NgModule({
