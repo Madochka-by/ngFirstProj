@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
+import { LocalStorageService } from 'src/app/functionForAllProject/lcStorage/local-storage.service';
 import { CardData } from 'src/app/shop-page/service/get-dbdata.service';
 
 @Component({
@@ -9,24 +10,34 @@ import { CardData } from 'src/app/shop-page/service/get-dbdata.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() name?: string;
+  @Input() name!: string;
   @Input() price!: number;
   @Input() img?: string;
   @Input() description?: string;
   @Input() sale?: string;
 
   @Input() obj!: CardData[];
-  public currentProduct!: CardData[];
+  public currentProduct!: CardData;
 
   public totalPrice!: string;
   public salePrice!: string;
   public saleImg!: string;
 
-  public set(num: number): string {
+  public setPoint(num: number): string {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
-  constructor(private router: Router, private currentProd: FlatMapService) {}
+  constructor(
+    private router: Router,
+    private currentProd: FlatMapService,
+    private _localStorage: LocalStorageService
+  ) {}
+
+  public set(): void {
+    this.currentProd.currentProductForCart(this.obj, this.name);
+    this.currentProduct = this.currentProd.getCurrentProductForCart();
+    this._localStorage.setItem(this.currentProduct);
+  }
 
   public goToPage(): void {
     this.router.navigate(['product']);
@@ -35,10 +46,12 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalPrice = this.set(this.price);
+    this.totalPrice = this.setPoint(this.price);
 
     if (this.sale != '') {
-      this.salePrice = this.set(this.price - (+this.sale! / 100) * this.price);
+      this.salePrice = this.setPoint(
+        this.price - (+this.sale! / 100) * this.price
+      );
       this.saleImg = `/assets/img/sale${this.sale}.png`;
     }
   }
