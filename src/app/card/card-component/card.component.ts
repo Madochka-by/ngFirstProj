@@ -23,33 +23,29 @@ export class CardComponent implements OnInit {
   public salePrice!: string;
   public saleImg!: string;
 
-  public setPoint(num: number): string {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  }
-
   constructor(
-    private router: Router,
-    private currentProd: FlatMapService,
+    private _router: Router,
+    private _func: FlatMapService,
     private _localStorage: LocalStorageService
   ) {}
 
   public set(): void {
-    this.currentProd.currentProductForCart(this.obj, this.name);
-    this.currentProduct = this.currentProd.getCurrentProductForCart();
+    this._func.currentProductForCart(this.obj, this.name);
+    this.currentProduct = this._func.getCurrentProductForCart();
     this._localStorage.setItem(this.currentProduct);
   }
 
   public goToPage(): void {
-    this.router.navigate(['product']);
+    this._router.navigate(['product']);
 
-    this.currentProd.currentProductForCart(this.obj, this.name!);
+    this._func.currentProductForCart(this.obj, this.name!);
   }
 
   ngOnInit(): void {
-    this.totalPrice = this.setPoint(this.price);
+    this.totalPrice = this._func.setPoint(this.price);
 
     if (this.sale != '') {
-      this.salePrice = this.setPoint(
+      this.salePrice = this._func.setPoint(
         this.price - (+this.sale! / 100) * this.price
       );
       this.saleImg = `/assets/img/sale${this.sale}.png`;

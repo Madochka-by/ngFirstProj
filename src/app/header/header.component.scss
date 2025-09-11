@@ -72,8 +72,12 @@
       flex-direction: column;
       gap: 20px;
       height: 1000vh;
-      overflow-y: scroll;
+      overflow-y: auto;
       height: 100%;
+
+      &::-webkit-scrollbar {
+        background-color: transparent;
+      }
 
       &-product {
         display: grid;

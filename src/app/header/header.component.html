@@ -41,17 +41,17 @@
           <ng-container *ngFor="let data of storageData; let i = index">
             <div class="dropdown-items-slider-product">
               <div class="dropdown-items-slider-product-picture">
-                <img [src]="data.img" alt="" />
+                <img [src]="picture[i]" alt="" />
               </div>
               <div class="dropdown-items-slider-product-info">
                 <h1>{{ data.name }}</h1>
                 <span
                   ><p>{{ data.amount }}</p>
                   <p>X</p>
-                  <h2>Rs. {{ data.price }}</h2></span
+                  <h2>Rs. {{ _func.setPoint(data.currentPrice) }}</h2></span
                 >
               </div>
-              <button (click)="delItem(data.SKU, i); $event.stopPropagation()">
+              <button (click)="delItem(i); $event.stopPropagation()">
                 <i class="pi pi-crest"></i>
               </button>
             </div>
@@ -60,7 +60,7 @@
       </div>
       <div class="dropdown-prices">
         <p>Subtotal</p>
-        <h1>Rs. 520,000.00</h1>
+        <h1>Rs. {{ _func.calculateTotalPriceForCart() }}</h1>
       </div>
     </div>
     <div class="dropdown-navigate">

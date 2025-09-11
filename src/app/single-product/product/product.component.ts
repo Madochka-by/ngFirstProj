@@ -38,7 +38,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private _proccessingFunc: FlatMapService,
+    public _proccessingFunc: FlatMapService,
     private _getData: GetDBDataService,
     private _storage: LocalStorageService
   ) {}

@@ -1,16 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import {
-  AfterViewChecked,
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import {
   LocalStorageService,
   storage,
 } from '../functionForAllProject/lcStorage/local-storage.service';
+import { FlatMapService } from '../functionForAllProject/FlatMap/flat-map.service';
 
 const show = transition(':enter', [
   style({ transform: 'translateX(100%)' }),
@@ -30,11 +24,17 @@ const transl = trigger('traslate', [show, unShow]);
   styleUrls: ['./header.component.scss'],
   animations: [transl],
 })
-export class HeaderComponent implements OnInit, AfterViewChecked {
+export class HeaderComponent {
   public isShow = false;
   public storageData!: storage[];
+  public picture: string[] = [];
 
   @ViewChild('dropDown') dropDown!: ElementRef<HTMLElement>;
+
+  constructor(
+    private _storage: LocalStorageService,
+    public _func: FlatMapService
+  ) {}
 
   @HostListener('document:click', ['$event'])
   handleClick(event: PointerEvent): void {
@@ -42,22 +42,17 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
 
     if (target.classList.contains('pi-shopping-cart')) {
       this.isShow = true;
-      this.storageData = this.storage.getItem();
-      return;
-    }
-    if (!target.closest('.dropdown')) {
+      this.storageData = this._storage.getItem();
+      this.storageData.map((el) => {
+        this.picture.push(el.img.replace(/\s+/g, '-'));
+      });
+    } else if (!target.closest('.dropdown')) {
       this.isShow = false;
     }
   }
 
-  constructor(private storage: LocalStorageService) {}
-
-  public delItem(SKU: string, index: number): void {
-    this.storage.deleteItem(SKU);
+  public delItem(index: number): void {
+    this._storage.deleteItem(index);
     this.storageData.splice(index, 1);
   }
-
-  ngOnInit(): void {}
-
-  ngAfterViewChecked(): void {}
 }

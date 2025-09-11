@@ -6,7 +6,8 @@ export interface storage {
   amount: number;
   img: string;
   name: string;
-  price: number;
+  totalPrice: number;
+  currentPrice: number;
   SKU: string;
 }
 
@@ -14,43 +15,43 @@ export interface storage {
   providedIn: 'root',
 })
 export class LocalStorageService {
-  private curDat!: CardData;
   private storageData: storage[] = [];
-  private storageKeys: string[] = [];
-
-  constructor(private _getData: FlatMapService) {}
-
-  public set(): void {
-    this.curDat = this._getData.getCurrentProductForCart();
-  }
 
   public setItem(data: CardData): void {
+    const lcData: storage[] = JSON.parse(
+      localStorage.getItem('itemForCart') || '[]'
+    );
+
     const storageData: storage = {
       amount: 1,
       img: data.img[0],
       name: data.name,
-      price: data.price,
+      totalPrice: data.price,
+      currentPrice: data.price,
       SKU: data.SKU,
     };
 
-    localStorage.setItem(data.SKU, JSON.stringify(storageData));
+    const temp: storage | undefined = lcData.find(
+      (el: storage) => el.name == storageData.name
+    );
+
+    temp ? temp.amount++ : lcData.push(storageData);
+    temp ? (temp.currentPrice = temp.totalPrice * temp.amount) : '';
+
+    localStorage.setItem('itemForCart', JSON.stringify(lcData));
   }
 
   public getItem(): storage[] {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key: string = localStorage.key(i)!;
-      this.storageKeys.push(key);
-    }
-
-    this.storageKeys.forEach((el: string) => {
-      const temp: string | null = localStorage.getItem(el);
-      if (temp) this.storageData.push(JSON.parse(temp));
-    });
-
+    this.storageData = JSON.parse(localStorage.getItem('itemForCart') || '[]');
     return this.storageData;
   }
 
-  public deleteItem(indexItem: string): void {
-    localStorage.removeItem(indexItem);
+  public deleteItem(indexItem: number): void {
+    const lcData: storage[] = JSON.parse(
+      localStorage.getItem('itemForCart') || '[]'
+    );
+    lcData.splice(indexItem, 1);
+
+    localStorage.setItem('itemForCart', JSON.stringify(lcData));
   }
 }

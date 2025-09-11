@@ -4,14 +4,18 @@ import {
   CategoryOfProduct,
   RoomsItem,
 } from 'src/app/shop-page/service/get-dbdata.service';
+import {
+  LocalStorageService,
+  storage,
+} from '../lcStorage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlatMapService {
-  private curDat!: CardData;
+  constructor(private _storage: LocalStorageService) {}
 
-  constructor() {}
+  private curDat!: CardData;
 
   public bringingDataIntoLine(arrayData: CategoryOfProduct): CardData[] {
     return Object.values(arrayData)
@@ -31,5 +35,19 @@ export class FlatMapService {
 
   public getCurrentProductForCart(): CardData {
     return this.curDat;
+  }
+
+  public setPoint(num: number): string {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  public calculateTotalPriceForCart(): string {
+    const startSum: number = 0;
+    const sumPrice: number = this._storage
+      .getItem()
+      .map((item: storage) => item.currentPrice)
+      .reduce((acc: number, curr: number) => acc + curr, startSum);
+
+    return this.setPoint(sumPrice);
   }
 }
