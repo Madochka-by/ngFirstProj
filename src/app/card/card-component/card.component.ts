@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { LocalStorageService } from 'src/app/functionForAllProject/lcStorage/local-storage.service';
 import { CardData } from 'src/app/shop-page/service/get-dbdata.service';
@@ -26,8 +27,19 @@ export class CardComponent implements OnInit {
   constructor(
     private _router: Router,
     private _func: FlatMapService,
-    private _storage: LocalStorageService
+    public _storage: LocalStorageService,
+    private _messageService: MessageService
   ) {}
+
+  public showBottomRight(): void {
+    this._messageService.add({
+      key: 'br',
+      severity: 'success',
+      summary: 'Product added to cart',
+      life: 1000,
+      styleClass: 'my-toast-success',
+    });
+  }
 
   public set(): void {
     this._func.currentProductForCart(this.obj, this.name);

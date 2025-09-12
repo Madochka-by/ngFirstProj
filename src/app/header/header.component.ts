@@ -29,6 +29,8 @@ export class HeaderComponent {
   public storageData!: storage[];
   public picture: string[] = [];
 
+  public display: boolean = false;
+
   @ViewChild('dropDown') dropDown!: ElementRef<HTMLElement>;
 
   constructor(

@@ -46,7 +46,11 @@
         <p>{{ countOfProduct }}</p>
         <button (click)="plusFunc()" class="pi pi-plus"></button>
       </div>
-      <input (click)="set()" type="submit" value="Add To Cart" />
+      <input
+        (click)="sendQuantity(countOfProduct); set(); showBottomRight()"
+        type="submit"
+        value="Add To Cart"
+      />
       <button class="custom"><i class="pi pi-plus"></i> Compare</button>
     </div>
   </div>

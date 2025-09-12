@@ -34,6 +34,11 @@ const routes: Routes = [
         (m) => m.CartForBuyModule
       ),
   },
+  {
+    path: 'check',
+    loadChildren: () =>
+      import('./check-out/check-out.module').then((m) => m.CheckOutModule),
+  },
 ];
 
 @NgModule({

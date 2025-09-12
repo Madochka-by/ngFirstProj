@@ -1,0 +1,168 @@
+@use "variables" as *;
+
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 5vw;
+  padding: 10vh 11vw;
+
+  &-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      font-size: 36px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    input,
+    select {
+      border: 1px solid $color-secondLigthGrey;
+      border-radius: 10px;
+      padding: 15px 30px;
+      transition: 0.3s ease-in-out;
+
+      &:focus {
+        border: 1px solid black;
+        transform: scale(1.01);
+      }
+    }
+
+    &-name {
+      display: flex;
+      gap: 20px;
+
+      &-inp {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    &-inp {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  &-info {
+    h2 {
+      font-weight: 300;
+      line-height: 150%;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    button {
+      background: transparent;
+      border: 1px solid black;
+      border-radius: 15px;
+      padding: 10px 6vw;
+      font-size: 20px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.9;
+      }
+    }
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &-product {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $color-secondLigthGrey;
+
+        li {
+          font-size: 16px;
+
+          span {
+            color: $color-secondLigthGrey;
+          }
+        }
+
+        .tittle {
+          font-size: 24px;
+          font-weight: 500;
+        }
+
+        .price {
+          font-weight: 300;
+        }
+
+        .total {
+          font-size: 24px;
+          font-weight: 700;
+          color: $color-primary;
+        }
+
+        &-left {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding: 20px 0;
+          align-items: flex-start;
+        }
+
+        &-right {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding: 20px 0;
+          align-items: flex-end;
+        }
+      }
+
+      &-radio {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+          display: flex;
+          gap: 10px;
+          font-size: 16px;
+        }
+
+        h1 {
+          font-weight: 300;
+          color: $color-secondLigthGrey;
+          line-height: 150%;
+        }
+      }
+
+      &-choise {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+          opacity: 0.4;
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}

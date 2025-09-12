@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { LocalStorageService } from 'src/app/functionForAllProject/lcStorage/local-storage.service';
@@ -40,8 +41,13 @@ export class ProductComponent implements OnInit, OnDestroy {
   constructor(
     public _func: FlatMapService,
     private _getData: GetDBDataService,
-    private _storage: LocalStorageService
+    private _storage: LocalStorageService,
+    private _messageService: MessageService
   ) {}
+
+  public sendQuantity(quantity: number): void {
+    this._storage.getQuantity(quantity);
+  }
 
   public ngOnInit(): void {
     this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
@@ -68,6 +74,16 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.puctures[(this.currentIndexPicture + 1) % this.puctures.length],
       this.puctures[(this.currentIndexPicture + 2) % this.puctures.length],
     ];
+  }
+
+  public showBottomRight(): void {
+    this._messageService.add({
+      key: 'br',
+      severity: 'success',
+      summary: 'Product added to cart',
+      life: 1000,
+      styleClass: 'my-toast-success',
+    });
   }
 
   ngOnDestroy(): void {

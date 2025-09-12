@@ -3,7 +3,9 @@
   <div class="card-frame">
     <img class="card-frame__preview" [src]="img" alt="" />
     <div class="card-frame-hover">
-      <button (click)="set()">Add to cart</button>
+      <button (click)="_storage.getQuantity(1); set(); showBottomRight()">
+        Add to cart
+      </button>
       <div class="card-frame-hover-item">
         <i class="pi pi-share-alt"><span>Share</span></i>
         <i class="pi pi-arrow-right-arrow-left"><span>Compare</span></i>
@@ -26,4 +28,5 @@
       </div>
     </ng-template>
   </div>
+  <p-toast [baseZIndex]="111" position="bottom-right" key="br" />
 </div>

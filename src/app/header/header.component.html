@@ -70,10 +70,10 @@
       </div>
     </div>
     <div class="dropdown-navigate">
-      <button>
-        <a (click)="isShow = false" [routerLink]="['cartBuy']">Cart</a>
+      <button (click)="isShow = false" [routerLink]="['cartBuy']">Cart</button>
+      <button (click)="isShow = false" [routerLink]="['check']">
+        Checkout
       </button>
-      <button>Checkout</button>
       <button>Comparison</button>
     </div>
   </div>

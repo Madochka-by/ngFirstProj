@@ -30,7 +30,7 @@
             </p>
             <p id="frame">{{ _func.setPoint(item.amount) }}</p>
             <p class="container-cart-wrapper-items-product__price">
-              Rs. {{ item.currentPrice }}
+              Rs. {{ _func.setPoint(item.currentPrice) }}
             </p>
             <i (click)="deleteProduct(i)" class="pi pi-custom-trash"></i>
           </ng-container>
@@ -53,11 +53,11 @@
       <span>
         <h1>Total</h1>
         <p class="container-check-info__tot">
-          Rs.{{ _func.calculateTotalPriceForCart() }}
+          Rs. {{ _func.calculateTotalPriceForCart() }}
         </p>
       </span>
 
-      <button>Check Out</button>
+      <button [routerLink]="['/check']">Check Out</button>
     </div>
   </div>
 </div>

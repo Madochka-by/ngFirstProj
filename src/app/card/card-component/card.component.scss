@@ -1,5 +1,22 @@
 @use "variables" as *;
 
+:host ::ng-deep .p-toast-bottom-right .p-toast-message {
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding: 10px;
+}
+
+:host ::ng-deep .p-toast-bottom-right {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+:host ::ng-deep .my-toast-success {
+  pointer-events: none;
+}
+
 .card {
   background: #f4f5f7;
   position: relative;
