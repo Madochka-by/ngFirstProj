@@ -50,4 +50,9 @@ export class FlatMapService {
 
     return this.setPoint(sumPrice);
   }
+
+  // public calculateQuantityProd(): number {
+  //   const sumProdQuantity = this._storage.getItem().length;
+  //   return 1;
+  // }
 }

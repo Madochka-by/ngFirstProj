@@ -16,6 +16,7 @@ import { PaginatorModule } from 'primeng/paginator';
     OnfooterModule,
     CardModule,
     PaginatorModule,
+    ShopPageRouting,
   ],
 })
 export class ShopPageModule {}

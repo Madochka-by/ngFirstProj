@@ -12,6 +12,7 @@ import { GetDBDataService } from './shop-page/service/get-dbdata.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlatMapService } from './functionForAllProject/FlatMap/flat-map.service';
 import { LocalStorageService } from './functionForAllProject/lcStorage/local-storage.service';
+import { FiltersService } from './shop-page/service/filters.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -24,7 +25,12 @@ import { LocalStorageService } from './functionForAllProject/lcStorage/local-sto
     BrowserAnimationsModule,
     ButtonModule,
   ],
-  providers: [GetDBDataService, FlatMapService, LocalStorageService],
+  providers: [
+    GetDBDataService,
+    FlatMapService,
+    LocalStorageService,
+    FiltersService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

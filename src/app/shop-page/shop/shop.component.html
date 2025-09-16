@@ -1,11 +1,9 @@
 <app-banner-line [path]="'home'" [title]="'shop'"></app-banner-line>
 
-<div class="sortline">
+<div #items class="sortline">
   <div class="sortline-content">
     <div class="sortline-content-icons">
-      <span
-        (click)="isShow = !isShow; ngAfterViewInit()"
-        class="sortline-content-icons__left"
+      <span (click)="isShow = !isShow" class="sortline-content-icons__left"
         ><i class="pi pi-sliders-h"></i>
         <p>Filter</p>
       </span>
@@ -33,7 +31,7 @@
   </div>
 </div>
 
-<div #items class="items">
+<div class="items">
   <div @fadeIn *ngIf="isShow" class="items-filter">
     <div class="items-filter-container">
       <h1>Shop By Room</h1>
@@ -41,7 +39,22 @@
         <p (click)="isShowRoom[i] = !isShowRoom[i]">{{ room.key }}</p>
         <ng-container *ngFor="let prod of room.value">
           <ul *ngIf="isShowRoom[i]">
-            <li>{{ prod }}</li>
+            <li
+              (click)="
+                viewDataFilt = _filters.chooseByRooms(
+                  room.key,
+                  prod,
+                  allDataForFilters
+                );
+                currentDataPage = _filters.chooseByRooms(
+                  room.key,
+                  prod,
+                  allDataForFilters
+                )
+              "
+            >
+              {{ prod }}
+            </li>
           </ul>
         </ng-container>
       </ng-container>
@@ -51,8 +64,8 @@
       <div class="items-filter-container-colors">
         <ng-container *ngFor="let color of colorsFilter; let i = index">
           <i
-            (click)="isShowColor[i] = !isShowColor[i]; focusColor(i)"
-            #colors
+            (click)="toggleColor(color)"
+            [class.active-color]="arrayColors.includes(color)"
             [style.background]="color"
           ></i>
         </ng-container>
@@ -78,8 +91,9 @@
       </ng-container>
     </div>
   </div>
+
   <div class="items-container">
-    <div #grid class="items-container-cards">
+    <div [class.filter]="isShow" class="items-container-cards">
       <ng-container *ngFor="let item of currentDataPage">
         <app-card
           [price]="item.price"
@@ -97,7 +111,7 @@
       [first]="1"
       [rows]="8"
       [totalRecords]="allData.length"
-      [pageLinkSize]="3"
+      [pageLinkSize]="4"
       [showFirstLastIcon]="false"
     ></p-paginator>
   </div>

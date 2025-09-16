@@ -34,7 +34,7 @@ export class HeaderComponent {
   @ViewChild('dropDown') dropDown!: ElementRef<HTMLElement>;
 
   constructor(
-    private _storage: LocalStorageService,
+    public _storage: LocalStorageService,
     public _func: FlatMapService
   ) {}
 
@@ -42,7 +42,10 @@ export class HeaderComponent {
   handleClick(event: PointerEvent): void {
     const target = event.target as HTMLElement;
 
-    if (target.classList.contains('pi-shopping-cart')) {
+    if (
+      target.classList.contains('pi-shopping-cart') ||
+      target.classList.contains('click')
+    ) {
       this.isShow = true;
       this.storageData = this._storage.getItem();
       this.storageData.map((el) => {

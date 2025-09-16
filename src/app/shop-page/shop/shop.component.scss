@@ -185,6 +185,8 @@
         li {
           cursor: pointer;
           font-size: 16px;
+          transition: 0.2s;
+
           &:hover {
             opacity: 0.7;
           }
@@ -210,4 +212,13 @@
       gap: 30px;
     }
   }
+}
+
+.active-color {
+  transform: scale(1.5);
+}
+.filter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: flex-end;
 }

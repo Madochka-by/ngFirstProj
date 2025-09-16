@@ -134,6 +134,18 @@
         }
       }
 
+      input[type="radio"] {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50px;
+        border: 1px solid black;
+
+        &:focus {
+          background: black;
+        }
+      }
+
       &-radio {
         display: flex;
         flex-direction: column;
@@ -158,9 +170,13 @@
         gap: 20px;
 
         span {
-          opacity: 0.4;
+          color: $color-secondLigthGrey;
           display: flex;
           gap: 10px;
+
+          input {
+            border: 1px solid $color-secondLigthGrey;
+          }
         }
       }
     }

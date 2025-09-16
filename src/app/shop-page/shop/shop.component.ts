@@ -1,12 +1,9 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
   OnInit,
-  QueryList,
   ViewChild,
-  ViewChildren,
 } from '@angular/core';
 import {
   CardData,
@@ -20,6 +17,7 @@ import {
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { Subscription } from 'rxjs';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { FiltersService } from '../service/filters.service';
 
 const show = transition(':enter', [
   style({ opacity: 0, transform: 'translateX(-100%)' }),
@@ -42,8 +40,10 @@ const fadeIn = trigger('fadeIn', [show, leave]);
   styleUrls: ['./shop.component.scss'],
   animations: [fadeIn],
 })
-export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ShopComponent implements OnInit, OnDestroy {
   public allData!: CardData[];
+  public viewDataFilt!: CardData[];
+  public allDataForFilters!: CategoryOfProduct;
   public currentDataPage!: CardData[];
 
   public colorsFilter!: string[];
@@ -56,30 +56,17 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public isShow: boolean = false;
   public isShowRoom: boolean[] = [false, false, false];
-  public isShowColor: boolean[] = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
+  public arrayColors: string[] = [];
 
   public subGetData!: Subscription;
-  public subGetFiltes!: Subscription;
 
   @ViewChild('items') items!: ElementRef<HTMLElement>;
-  @ViewChildren('colors') colorsElement!: QueryList<ElementRef<HTMLElement>>;
   @ViewChild('grid') grid!: ElementRef<HTMLElement>;
 
   constructor(
     private _getData: GetDBDataService,
-    private _func: FlatMapService
+    private _func: FlatMapService,
+    public _filters: FiltersService
   ) {}
 
   public ngOnInit(): void {
@@ -87,11 +74,14 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
       .getData()
       .subscribe((res: CategoryOfProduct) => {
         this.allData = this._func.bringingDataIntoLine(res);
+        this.viewDataFilt = this.allData;
+
+        this.allDataForFilters = res;
 
         this.currentDataPage = this.allData.slice(0, 8);
       });
 
-    this.subGetFiltes = this._getData.getFilters().subscribe((res: filters) => {
+    this.subGetData = this._getData.getFilters().subscribe((res: filters) => {
       this.colorsFilter = res.color;
       this.priceFilter = Object.values(res.price);
       this.shopByRoom = res.shopByRoom;
@@ -111,28 +101,28 @@ export class ShopComponent implements OnInit, OnDestroy, AfterViewInit {
     this.currentPageCount = start;
     this.currentPageCountLeft = Math.min(end, this.allData.length);
   }
-
-  public focusColor(i: number): void {
-    const el: HTMLElement = this.colorsElement.toArray()[i].nativeElement;
-    if (this.isShowColor[i]) {
-      el.style.scale = '1.5';
+  public toggleColor(color: string): void {
+    if (this.arrayColors.includes(color)) {
+      const index = this.arrayColors.indexOf(color);
+      this.arrayColors.splice(index, 1);
     } else {
-      el.style.scale = '1';
+      this.arrayColors.push(color);
     }
-  }
-
-  ngAfterViewInit(): void {
-    if (this.isShow) {
-      this.items.nativeElement.style.display = 'grid';
-      this.grid.nativeElement.style.gridTemplateColumns = 'repeat(3,1fr)';
+    if (this.arrayColors.length != 0) {
+      this.currentDataPage = this._filters
+        .chooseByColor(this.arrayColors, this.viewDataFilt)
+        .slice(0, 8);
+      this.allData = this._filters.chooseByColor(
+        this.arrayColors,
+        this.viewDataFilt
+      );
     } else {
-      this.items.nativeElement.style.display = 'block';
-      this.grid.nativeElement.style.gridTemplateColumns = 'repeat(4,1fr)';
+      this.allData = this.viewDataFilt;
+      this.currentDataPage = this.allData.slice(0, 8);
     }
   }
 
   public ngOnDestroy(): void {
     this.subGetData.unsubscribe();
-    this.subGetFiltes.unsubscribe();
   }
 }

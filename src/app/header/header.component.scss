@@ -201,7 +201,29 @@ header {
       display: flex;
       gap: 5vw;
 
+      span {
+        position: absolute;
+        background: black;
+        height: 14px;
+        width: 14px;
+        font-size: 10px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        right: -5px;
+        cursor: pointer;
+
+        p {
+          cursor: pointer;
+          color: white;
+        }
+      }
+
       li {
+        position: relative;
+
         &:hover {
           opacity: 0.7;
         }

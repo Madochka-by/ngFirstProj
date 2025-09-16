@@ -19,12 +19,17 @@
       </li>
       <li><a class="pi pi-search" href=""></a></li>
       <li><a class="pi pi-heart" href=""></a></li>
-      <li>
+      <li class="countProd">
         <a
           (click)="$event.preventDefault()"
           class="pi pi-shopping-cart"
           href=""
         ></a>
+        <span class="click" *ngIf="_storage.getItem().length != 0"
+          ><p class="click">
+            {{ _storage.getItem().length }}
+          </p></span
+        >
       </li>
     </ul>
   </div>
