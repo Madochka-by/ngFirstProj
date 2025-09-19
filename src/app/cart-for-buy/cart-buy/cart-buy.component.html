@@ -1,0 +1,65 @@
+<app-banner-line [title]="'Cart'" [path]="'Home'"></app-banner-line>
+
+<div class="container">
+  <div class="container-cart">
+    <div class="container-cart-cell">
+      <p>Product</p>
+      <p class="container-cart-cell__price">Price</p>
+      <p>Quantity</p>
+      <p class="container-cart-cell__price">Subtotal</p>
+    </div>
+    <div class="container-cart-wrapper">
+      <div class="container-cart-wrapper-items">
+        <p
+          *ngIf="storageData.length == 0"
+          class="container-cart-wrapper-items-empty"
+        >
+          Корзина пуста
+        </p>
+        <div class="container-cart-wrapper-items-product">
+          <ng-container *ngFor="let item of storageData; let i = index">
+            <div class="container-cart-wrapper-items-product-picture">
+              <img [src]="picture[i]" alt="" />
+              <p id="lightGrey">{{ item.name }}</p>
+            </div>
+            <p
+              id="lightGrey"
+              class="container-cart-wrapper-items-product__price"
+            >
+              Rs. {{ _func.setPoint(item.totalPrice) }}
+            </p>
+            <p id="frame">{{ _func.setPoint(item.amount) }}</p>
+            <p class="container-cart-wrapper-items-product__price">
+              Rs. {{ _func.setPoint(item.currentPrice) }}
+            </p>
+            <i (click)="deleteProduct(i)" class="pi pi-custom-trash"></i>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="container-check">
+    <div class="container-check-title">
+      <h1>Cart Totals</h1>
+    </div>
+    <div class="container-check-info">
+      <span
+        ><h1>Subtotal</h1>
+        <p class="container-check-info__sub">
+          Rs. {{ _func.calculateTotalPriceForCart() }}
+        </p></span
+      >
+      <span>
+        <h1>Total</h1>
+        <p class="container-check-info__tot">
+          Rs. {{ _func.calculateTotalPriceForCart() }}
+        </p>
+      </span>
+
+      <button [routerLink]="['/check']">Check Out</button>
+    </div>
+  </div>
+</div>
+
+<app-onfooter></app-onfooter>

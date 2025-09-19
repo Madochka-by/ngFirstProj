@@ -96,7 +96,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.sub = this._getData.getData().subscribe((res: any) => {
       this.allData = this._proccessingFunc.bringingDataIntoLine(res);
-      console.log(this.allData);
     });
   }
 

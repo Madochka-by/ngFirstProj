@@ -1,0 +1,116 @@
+<app-banner-line [path]="'Home'" [title]="'Checkout'"></app-banner-line>
+
+<div class="container">
+  <div class="container-fields">
+    <h1>Billing details</h1>
+    <div class="container-fields-name">
+      <div class="container-fields-name-inp">
+        <p>First Name</p>
+        <input type="text" />
+      </div>
+      <div class="container-fields-name-inp">
+        <p>Last Name</p>
+        <input type="text" />
+      </div>
+    </div>
+    <div class="container-fields-inp">
+      <p>Company Name (Optional)</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p>Country / Region</p>
+      <select name="" id="">
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </div>
+    <div class="container-fields-inp">
+      <p>Street address</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p>Town / City</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p>Province</p>
+      <select name="" id="">
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+    </div>
+    <div class="container-fields-inp">
+      <p>ZIP code</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p>Phone</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p>Email address</p>
+      <input type="text" />
+    </div>
+    <div class="container-fields-inp">
+      <p></p>
+      <input type="text" placeholder="Additional information" />
+    </div>
+  </div>
+  <div class="container-info">
+    <div class="container-info-data">
+      <div class="container-info-data-product">
+        <ul class="container-info-data-product-left">
+          <li class="tittle">Product</li>
+          <li *ngIf="localData.length == 0">
+            <span>name of product</span> x 0
+          </li>
+          <li *ngFor="let prices of localData">
+            <span>{{ prices.name }}</span> X {{ prices.amount }}
+          </li>
+          <li>Subtotal</li>
+          <li>Total</li>
+        </ul>
+        <ul class="container-info-data-product-right">
+          <li class="tittle">Subtotal</li>
+          <li *ngFor="let prices of localData" class="price">
+            Rs. {{ _func.setPoint(prices.currentPrice) }}
+          </li>
+          <li *ngIf="localData.length == 0">0</li>
+          <li class="price">Rs. {{ totalSum }}</li>
+          <li class="total">Rs. {{ totalSum }}</li>
+        </ul>
+      </div>
+      <div class="container-info-data-radio">
+        <span
+          ><input type="radio" />
+          <p>Direct Bank Transfer</p></span
+        >
+        <h1>
+          Make your payment directly into our bank account. Please use your
+          Order ID as the payment reference. Your order will not be shipped
+          until the funds have cleared in our account.
+        </h1>
+      </div>
+      <div class="container-info-data-choise">
+        <span
+          ><input type="radio" />
+          <p>Direct Bank Transfer</p></span
+        >
+        <span
+          ><input type="radio" />
+          <p>Cash On Delivery</p></span
+        >
+      </div>
+      <h2>
+        Your personal data will be used to support your experience throughout
+        this website, to manage access to your account, and for other purposes
+        described in our <span>privacy policy.</span>
+      </h2>
+    </div>
+    <button>Place order</button>
+  </div>
+</div>
+
+<app-onfooter></app-onfooter>
