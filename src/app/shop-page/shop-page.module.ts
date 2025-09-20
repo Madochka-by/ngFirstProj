@@ -6,6 +6,8 @@ import { ShopPageRouting } from './shop-page-routing.module';
 import { OnfooterModule } from '../onfooter/onfooter.module';
 import { CardModule } from 'src/app/card/card.module';
 import { PaginatorModule } from 'primeng/paginator';
+import { RatingModule } from 'primeng/rating';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [ShopComponent],
@@ -17,6 +19,8 @@ import { PaginatorModule } from 'primeng/paginator';
     CardModule,
     PaginatorModule,
     ShopPageRouting,
+    RatingModule,
+    TableModule,
   ],
 })
 export class ShopPageModule {}

@@ -3,26 +3,28 @@
 <div #items class="sortline">
   <div class="sortline-content">
     <div class="sortline-content-icons">
-      <span (click)="isShow = !isShow" class="sortline-content-icons__left"
-        ><i class="pi pi-sliders-h"></i>
+      <span (click)="isShow = !isShow" class="sortline-content-icons__left">
+        <i class="pi pi-sliders-h"></i>
         <p>Filter</p>
       </span>
       <span class="sortline-content-icons__right">
         <i class="pi pi-grid"></i>
-        <i class="pi pi-stack"></i
-      ></span>
+        <i class="pi pi-stack"></i>
+      </span>
     </div>
     <hr />
     <p>
       Showing
-      <span>{{ currentPageCount }} – {{ currentPageCountLeft }} </span> of
-      <span *ngIf="allData?.length">{{ allData.length }}</span> results
+      <span>{{ 1 }} – {{ currentDataPage.length }}</span>
+      of
+      <span *ngIf="allData?.length">{{ allData.length }}</span>
+      results
     </p>
   </div>
   <div class="sortline-inputs">
     <div class="sortline-inputs-item">
       <p>Show</p>
-      <span class="sortline-inputs-item__show">8</span>
+      <span class="sortline-inputs-item__show">{{currentDataPage.length }}</span>
     </div>
     <div class="sortline-inputs-item">
       <p>Short by</p>
@@ -39,20 +41,7 @@
         <p (click)="isShowRoom[i] = !isShowRoom[i]">{{ room.key }}</p>
         <ng-container *ngFor="let prod of room.value">
           <ul *ngIf="isShowRoom[i]">
-            <li
-              (click)="
-                viewDataFilt = _filters.chooseByRooms(
-                  room.key,
-                  prod,
-                  allDataForFilters
-                );
-                currentDataPage = _filters.chooseByRooms(
-                  room.key,
-                  prod,
-                  allDataForFilters
-                )
-              "
-            >
+            <li (click)="toggleRoom(room.key,prod)">
               {{ prod }}
             </li>
           </ul>
@@ -73,37 +62,45 @@
     </div>
     <div class="items-filter-container">
       <h1>Price</h1>
-      <ng-container *ngFor="let price of priceFilter">
+      <ng-container *ngFor="let price of priceFilter; ">
         <div class="items-filter-container-line">
-          <input type="checkbox" />
+          <input (change)="this.updateFilters();" type="radio" [value]="price" [(ngModel)]="selectedIndexRadio" />
           {{ price.min }} Rp - {{ price.max }} Rp
         </div>
       </ng-container>
     </div>
     <div class="items-filter-container">
       <h1>Rating</h1>
-      <ng-container *ngFor="let rating of ratingFilter">
-        <div class="items-filter-container-line">
-          <input type="checkbox" />
-          <p>{{ rating }}</p>
-          <i class="pi pi-star-fill"></i>
-        </div>
+      <p-rating *ngIf="allDataForFilters" (onRate)="toggleRating($event)" [(ngModel)]="ratingValue" [stars]="5" />
+    </div>
+    <div class="items-filter-container">
+      <h1>Size</h1>
+      <ng-container *ngFor="let size of sizeFilter; let i = index">
+        <ul>
+          <li (click)="toggleSize(size)" [class.active-size]="arraySize.includes(size)">{{size}}</li>
+        </ul>
       </ng-container>
+    </div>
+    <div class="items-filter-container">
+      <h1 (click)="resetFilters()" [style.cursor]="'pointer'">Reset Filters</h1>
     </div>
   </div>
 
   <div class="items-container">
     <div [class.filter]="isShow" class="items-container-cards">
-      <ng-container *ngFor="let item of currentDataPage">
-        <app-card
-          [price]="item.price"
-          [img]="item.previewImg"
-          [name]="item.name"
-          [description]="item.previewDescription"
-          [sale]="item.sale"
-          [obj]="currentDataPage"
-        ></app-card>
+      <ng-container *ngIf="allData?.length; else emptyCard">
+        <ng-container *ngFor="let item of currentDataPage">
+          <app-card
+            [price]="item.price"
+            [img]="item.previewImg"
+            [name]="item.name"
+            [description]="item.previewDescription"
+            [sale]="item.sale"
+            [obj]="currentDataPage"
+          ></app-card>
+        </ng-container>
       </ng-container>
+      <ng-template #emptyCard><p id="emptyCard">Товаров не найдено</p></ng-template>
     </div>
     <p-paginator
       *ngIf="allData?.length"
