@@ -3,10 +3,10 @@ import {
   CardData,
   CategoryOfProduct,
   GetDBDataService,
-  RoomsItem,
   filterPriceTotal,
   filters,
   filtersShopBy,
+  template,
 } from '../service/get-dbdata.service';
 
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
@@ -107,7 +107,11 @@ export class ShopComponent implements OnInit, OnDestroy {
       rating: this.ratingValue!,
       size: this.arraySize!,
     };
-    this.allData = this._filters.compilationAllFilters(this.allDataView, this.allDataForFilters, options);
+    this.allData = this._filters.compilationAllFilters(
+      this.allDataView,
+      this.allDataForFilters,
+      options,
+    );
     this.currentDataPage = this.allData.slice(0, 8);
   }
 

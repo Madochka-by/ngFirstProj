@@ -22,7 +22,7 @@
     </p>
   </div>
   <div class="sortline-inputs">
-    <div class="sortline-inputs-item">
+    <div class="sortline-inputs-item show">
       <p>Show</p>
       <span class="sortline-inputs-item__show">{{currentDataPage.length }}</span>
     </div>
@@ -41,7 +41,7 @@
         <p (click)="isShowRoom[i] = !isShowRoom[i]">{{ room.key }}</p>
         <ng-container *ngFor="let prod of room.value">
           <ul *ngIf="isShowRoom[i]">
-            <li (click)="toggleRoom(room.key,prod)">
+            <li (click)="toggleRoom(room.key, prod)">
               {{ prod }}
             </li>
           </ul>
@@ -64,20 +64,32 @@
       <h1>Price</h1>
       <ng-container *ngFor="let price of priceFilter; ">
         <div class="items-filter-container-line">
-          <input (change)="this.updateFilters();" type="radio" [value]="price" [(ngModel)]="selectedIndexRadio" />
+          <input
+            (change)="this.updateFilters();"
+            type="radio"
+            [value]="price"
+            [(ngModel)]="selectedIndexRadio"
+          />
           {{ price.min }} Rp - {{ price.max }} Rp
         </div>
       </ng-container>
     </div>
     <div class="items-filter-container">
       <h1>Rating</h1>
-      <p-rating *ngIf="allDataForFilters" (onRate)="toggleRating($event)" [(ngModel)]="ratingValue" [stars]="5" />
+      <p-rating
+        *ngIf="allDataForFilters"
+        (onRate)="toggleRating($event)"
+        [(ngModel)]="ratingValue"
+        [stars]="5"
+      />
     </div>
     <div class="items-filter-container">
       <h1>Size</h1>
       <ng-container *ngFor="let size of sizeFilter; let i = index">
         <ul>
-          <li (click)="toggleSize(size)" [class.active-size]="arraySize.includes(size)">{{size}}</li>
+          <li (click)="toggleSize(size)" [class.active-size]="arraySize.includes(size)">
+            {{size}}
+          </li>
         </ul>
       </ng-container>
     </div>

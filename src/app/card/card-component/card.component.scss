@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use 'variables' as *;
 
 :host ::ng-deep .p-toast-bottom-right .p-toast-message {
   background-color: white;
@@ -141,6 +141,25 @@
 
     .card-frame-hover {
       opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    .overlay {
+      background: none;
+    }
+    &-frame {
+      &-hover {
+        display: none;
+      }
+    }
+
+    &-info {
+      &-price {
+        flex-direction: column;
+      }
     }
   }
 }

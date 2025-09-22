@@ -2,10 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
-import {
-  CardData,
-  GetDBDataService,
-} from 'src/app/shop-page/service/get-dbdata.service';
+import { CardData, GetDBDataService } from 'src/app/shop-page/service/get-dbdata.service';
 
 export interface slide {
   id: number;
@@ -15,16 +12,11 @@ export interface slide {
 }
 
 const incrementTransition = transition(':increment', [
-  style({ opacity: 0 }),
+  style({ opacity: 0, transform: 'translateX(0)' }),
   animate('0.2s ease-out', style({ opacity: 1 })),
 ]);
 
-const decrementTransition = transition(':decrement', [
-  style({ opacity: 0 }),
-  animate('0.2s ease-out', style({ opacity: 1 })),
-]);
-
-const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
+const fadeIn = trigger('fadeIn', [incrementTransition]);
 
 @Component({
   selector: 'app-home-page',
@@ -35,7 +27,7 @@ const fadeIn = trigger('fadeIn', [incrementTransition, decrementTransition]);
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(
     private _getData: GetDBDataService,
-    private _proccessingFunc: FlatMapService
+    private _proccessingFunc: FlatMapService,
   ) {}
 
   public sub!: Subscription;

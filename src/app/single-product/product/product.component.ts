@@ -42,7 +42,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     public _func: FlatMapService,
     private _getData: GetDBDataService,
     private _storage: LocalStorageService,
-    private _messageService: MessageService
+    private _messageService: MessageService,
   ) {}
 
   public sendQuantity(quantity: number): void {
@@ -55,10 +55,13 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.viewProduct = this.allData.slice(0, 4);
     });
 
-    this.CurrentProduct = this._func.getCurrentProductForCart();
-    this.puctures = this.CurrentProduct.img.map((path: string) =>
-      path.replace(/\s+/g, '-')
-    );
+    if (sessionStorage.length != 0) {
+      const temp: string | null = sessionStorage.getItem('temp');
+      this.CurrentProduct = JSON.parse(temp!);
+    } else {
+      this.CurrentProduct = this._func.getCurrentProductForCart();
+    }
+    this.puctures = this.CurrentProduct.img.map((path: string) => path.replace(/\s+/g, '-'));
   }
 
   public set(): void {

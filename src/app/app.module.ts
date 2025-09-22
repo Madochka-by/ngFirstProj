@@ -13,9 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlatMapService } from './functionForAllProject/FlatMap/flat-map.service';
 import { LocalStorageService } from './functionForAllProject/lcStorage/local-storage.service';
 import { FiltersService } from './shop-page/service/filters.service';
+import { SidebarModule } from 'primeng/sidebar';
+import { HeaderDirective } from './header/directive/header.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HeaderDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,13 +26,9 @@ import { FiltersService } from './shop-page/service/filters.service';
     HttpClientModule,
     BrowserAnimationsModule,
     ButtonModule,
+    SidebarModule,
   ],
-  providers: [
-    GetDBDataService,
-    FlatMapService,
-    LocalStorageService,
-    FiltersService,
-  ],
+  providers: [GetDBDataService, FlatMapService, LocalStorageService, FiltersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

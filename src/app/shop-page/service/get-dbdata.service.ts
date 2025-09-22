@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 
 export interface CardData {
@@ -19,17 +19,17 @@ export interface CardData {
   previewDescription: string;
   size: string[];
 }
-export interface RoomsItem {
-  chairs: CardData[];
-  tables: CardData[];
-  sofas: CardData[];
-}
 
-export interface CategoryOfProduct {
-  bedroom: RoomsItem;
-  dining: RoomsItem;
-  living: RoomsItem;
-}
+type Item = 'chairs' | 'tables' | 'sofas';
+export type RoomsItem = Record<Item, CardData>;
+
+type Rooms = 'bedroom' | 'dining' | 'living';
+
+export type template<T> = Record<Rooms, T>;
+
+export type CategoryOfProduct = template<RoomsItem>;
+
+// export type filtersShopBy = template<string[]>;
 
 export interface filters {
   color: string[];
@@ -69,7 +69,7 @@ export class GetDBDataService {
   public getData(): Observable<CategoryOfProduct> {
     this.getData$ = this._httpClient
       .get<CategoryOfProduct>(
-        'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json'
+        'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/CATALOG/.json',
       )
       .pipe(shareReplay(1));
     return this.getData$;
@@ -78,7 +78,7 @@ export class GetDBDataService {
   public getFilters(): Observable<filters> {
     this.getFilters$ = this._httpClient
       .get<filters>(
-        'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/FILTER/.json'
+        'https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/FILTER/.json',
       )
       .pipe(shareReplay(1));
     return this.getFilters$;

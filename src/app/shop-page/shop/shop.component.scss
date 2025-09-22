@@ -106,6 +106,28 @@
   }
 }
 
+@media (max-width: 900px) {
+  .sortline {
+    display: grid;
+    grid-template-columns: 65% 35%;
+
+    &-content {
+    }
+
+    &-inputs {
+      .show {
+        display: none;
+      }
+
+      &-item {
+        &__sort {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
 .items {
   color: $color-darkGrey;
   display: block;
@@ -213,6 +235,10 @@
     }
   }
 }
+
+// @media(max-width:900px){
+//   .items
+// }
 
 .active-color {
   transform: scale(1.5);

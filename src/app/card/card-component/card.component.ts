@@ -28,7 +28,7 @@ export class CardComponent implements OnInit {
     private _router: Router,
     private _func: FlatMapService,
     public _storage: LocalStorageService,
-    private _messageService: MessageService
+    private _messageService: MessageService,
   ) {}
 
   public showBottomRight(): void {
@@ -49,18 +49,18 @@ export class CardComponent implements OnInit {
 
   public goToPage(): void {
     this._router.navigate(['product']);
-    console.log(this.obj);
 
     this._func.currentProductForCart(this.obj, this.name!);
+    const sessionProduct: CardData = this._func.getCurrentProductForCart();
+
+    sessionStorage.setItem('temp', JSON.stringify(sessionProduct));
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.totalPrice = this._func.setPoint(this.price);
 
     if (this.sale != '') {
-      this.salePrice = this._func.setPoint(
-        this.price - (+this.sale! / 100) * this.price
-      );
+      this.salePrice = this._func.setPoint(this.price - (+this.sale! / 100) * this.price);
       this.saleImg = `/assets/img/sale${this.sale}.png`;
     }
   }

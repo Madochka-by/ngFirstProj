@@ -1,8 +1,8 @@
-@use "variables" as *;
+@use 'variables' as *;
 
 .pi.pi-user-custom {
-  -webkit-mask: url("/assets/img/VectorUserCustom.svg") no-repeat center;
-  mask: url("/assets/img/VectorUserCustom.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/VectorUserCustom.svg') no-repeat center;
+  mask: url('/assets/img/VectorUserCustom.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -11,8 +11,8 @@
   height: 1em;
 }
 .pi.pi-crest {
-  -webkit-mask: url("/assets/img/VectorKrest.svg") no-repeat center;
-  mask: url("/assets/img/VectorKrest.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/VectorKrest.svg') no-repeat center;
+  mask: url('/assets/img/VectorKrest.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -195,6 +195,14 @@ header {
     align-items: center;
     gap: 10vw;
 
+    &-group3 {
+      cursor: pointer;
+
+      li:hover {
+        opacity: 0.7;
+      }
+    }
+
     &-group1,
     &-group2 {
       font-weight: 500;
@@ -234,4 +242,62 @@ header {
 
 .pi {
   font-size: 1.4rem;
+}
+
+@media (max-width: 900px) {
+  header {
+    display: grid;
+    grid-template-columns: 70% 30%;
+
+    .img {
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      img {
+        width: 10%;
+      }
+    }
+
+    .item {
+      justify-content: flex-end;
+
+      &-group1,
+      &-group2 {
+        gap: 20px;
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 1px solid black;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 400;
+        }
+      }
+
+      &-group3 {
+        i {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  header {
+    .img {
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      img {
+        width: 15%;
+      }
+    }
+  }
 }
