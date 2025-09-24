@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
@@ -43,6 +44,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private _getData: GetDBDataService,
     private _storage: LocalStorageService,
     private _messageService: MessageService,
+    private _router: ActivatedRoute,
   ) {}
 
   public sendQuantity(quantity: number): void {
@@ -54,18 +56,23 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.allData = this._func.bringingDataIntoLine(res);
       this.viewProduct = this.allData.slice(0, 4);
     });
+    this.CurrentProduct = this._func.getCurrentProductForCart();
 
-    if (sessionStorage.length != 0) {
-      const temp: string | null = sessionStorage.getItem('temp');
-      this.CurrentProduct = JSON.parse(temp!);
-    } else {
-      this.CurrentProduct = this._func.getCurrentProductForCart();
+    if (this.CurrentProduct === undefined) {
+      this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
+        const id: string | null = this._router.snapshot.paramMap.get('id');
+        this._func.bringingDataIntoLine(res).find((el: CardData) => {
+          if (el.name == id) this.CurrentProduct = el;
+        });
+        // console.log(this.CurrentProduct);
+      });
     }
+
     this.puctures = this.CurrentProduct.img.map((path: string) => path.replace(/\s+/g, '-'));
   }
 
   public set(): void {
-    this._storage.setItem(this.CurrentProduct);
+    this._storage.setItem(this.CurrentProduct!);
   }
 
   public goToSlide(index: number): void {

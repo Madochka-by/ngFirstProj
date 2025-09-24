@@ -244,6 +244,18 @@ header {
   font-size: 1.4rem;
 }
 
+// @media (max-width: 1200px) {
+//   .dropdown {
+//     width: 40%;
+//     &-items {
+//       &-slider {
+//         &-product {
+//         }
+//       }
+//     }
+//   }
+// }
+
 @media (max-width: 900px) {
   header {
     display: grid;

@@ -2,12 +2,7 @@
 <div class="grid">
   <div class="grid-pictures">
     <div class="grid-pictures-line">
-      <img
-        *ngFor="let pic of puctures; let i = index"
-        [src]="pic"
-        (click)="goToSlide(i)"
-        alt=""
-      />
+      <img *ngFor="let pic of puctures; let i = index" [src]="pic" (click)="goToSlide(i)" alt="" />
     </div>
     <div class="grid-pictures-main">
       <img [src]="puctures[currentIndexPicture]" alt="" />
@@ -17,7 +12,8 @@
     <h1>{{ CurrentProduct.name }}</h1>
     <h2>Rs. {{ _func.setPoint(CurrentProduct.price) }}</h2>
     <span class="line">
-      <i class="pi pi-star-fill"></i> <i class="pi pi-star-fill"></i>
+      <i class="pi pi-star-fill"></i>
+      <i class="pi pi-star-fill"></i>
       <hr />
       <span class="color">5 customer Review</span>
     </span>
@@ -51,7 +47,10 @@
         type="submit"
         value="Add To Cart"
       />
-      <button class="custom"><i class="pi pi-plus"></i> Compare</button>
+      <button class="custom">
+        <i class="pi pi-plus"></i>
+        Compare
+      </button>
     </div>
   </div>
   <div class="grid-another">
@@ -77,7 +76,8 @@
         <li>Sofas</li>
         <li>Sofa, Chair, Home, Shop</li>
         <li>
-          <i class="pi pi-facebook"></i> <i class="pi pi-linkedin"></i>
+          <i class="pi pi-facebook"></i>
+          <i class="pi pi-linkedin"></i>
           <i class="pi pi-twitter"></i>
         </li>
       </ul>
@@ -97,8 +97,9 @@
         (click)="$event.preventDefault(); activeTit(i)"
         [class.activeTit]="activeIndex === i"
         href=""
-        >{{ tit }}</a
       >
+        {{ tit }}
+      </a>
     </ng-container>
   </div>
   <div class="description-info">

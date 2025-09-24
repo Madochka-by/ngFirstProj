@@ -146,6 +146,7 @@
     p {
       font-size: 20px;
       cursor: pointer;
+
       &:hover {
         opacity: 0.7;
       }
@@ -236,9 +237,29 @@
   }
 }
 
-// @media(max-width:900px){
-//   .items
-// }
+@media (max-width: 1150px) {
+  .items {
+    &-filter {
+      padding: 20px 20px 5px 20px;
+      position: relative;
+      gap: 20px;
+      width: 100%;
+      flex-direction: row;
+
+      &-container {
+        &-colors {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+
+    &-container {
+      &-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
 
 .active-color {
   transform: scale(1.5);

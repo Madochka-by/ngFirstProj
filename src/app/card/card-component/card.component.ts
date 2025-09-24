@@ -48,12 +48,9 @@ export class CardComponent implements OnInit {
   }
 
   public goToPage(): void {
-    this._router.navigate(['product']);
+    this._router.navigate(['product', this.name]);
 
     this._func.currentProductForCart(this.obj, this.name!);
-    const sessionProduct: CardData = this._func.getCurrentProductForCart();
-
-    sessionStorage.setItem('temp', JSON.stringify(sessionProduct));
   }
 
   public ngOnInit(): void {

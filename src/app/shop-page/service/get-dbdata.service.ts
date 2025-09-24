@@ -29,8 +29,6 @@ export type template<T> = Record<Rooms, T>;
 
 export type CategoryOfProduct = template<RoomsItem>;
 
-// export type filtersShopBy = template<string[]>;
-
 export interface filters {
   color: string[];
   price: filterPrice;

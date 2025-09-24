@@ -6,7 +6,6 @@ import {
   filterPriceTotal,
   filters,
   filtersShopBy,
-  template,
 } from '../service/get-dbdata.service';
 
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
@@ -45,7 +44,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   public ratingFilter!: number[];
   public sizeFilter!: string[];
 
-  // public selectedPrice!: filterPriceTotal;
   public selectedIndexRadio?: filterPriceTotal;
   public ratingValue?: number;
 
@@ -75,7 +73,6 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.allDataForFilters = res;
       this.currentDataPage = this.allData.slice(0, 8);
     });
-
     this.subGetData = this._getData.getFilters().subscribe((res: filters) => {
       this.colorsFilter = res.color;
       this.priceFilter = Object.values(res.price);

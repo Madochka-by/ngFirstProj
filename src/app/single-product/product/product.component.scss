@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use 'variables' as *;
 .navigation {
   padding: 5vh;
   background-color: $color-beige;
@@ -284,6 +284,35 @@
 
     &:active {
       opacity: 0.9;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+
+    &-pictures {
+      display: grid;
+      grid-template-rows: auto auto;
+
+      &-line {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    &-information {
+      h3 {
+        width: auto;
+      }
+    }
+  }
+
+  .description {
+    &-pictures {
+      flex-direction: column;
     }
   }
 }

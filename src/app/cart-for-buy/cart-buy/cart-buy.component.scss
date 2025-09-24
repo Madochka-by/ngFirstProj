@@ -1,8 +1,8 @@
-@use "variables" as *;
+@use 'variables' as *;
 
 .pi.pi-custom-trash {
-  -webkit-mask: url("/assets/img/Trash.svg") no-repeat center;
-  mask: url("/assets/img/Trash.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/Trash.svg') no-repeat center;
+  mask: url('/assets/img/Trash.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
