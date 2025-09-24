@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use 'variables' as *;
 
 .container {
   display: grid;
@@ -134,7 +134,7 @@
         }
       }
 
-      input[type="radio"] {
+      input[type='radio'] {
         appearance: none;
         width: 15px;
         height: 15px;
@@ -180,5 +180,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: auto;
   }
 }

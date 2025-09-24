@@ -67,7 +67,7 @@
     }
 
     &-wrapper {
-      height: 100vh;
+      height: auto;
 
       &-items {
         height: 100%;
@@ -164,5 +164,21 @@ button {
 
   &:active {
     opacity: 0.9;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: auto;
+
+    &-cart {
+      &-wrapper {
+        height: auto;
+
+        &-items {
+          margin-top: 20px;
+        }
+      }
+    }
   }
 }
