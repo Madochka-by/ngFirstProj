@@ -1,5 +1,5 @@
 <div class="navigation"></div>
-<div class="grid">
+<div *ngIf="CurrentProduct" class="grid">
   <div class="grid-pictures">
     <div class="grid-pictures-line">
       <img *ngFor="let pic of puctures; let i = index" [src]="pic" (click)="goToSlide(i)" alt="" />

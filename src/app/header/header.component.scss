@@ -297,6 +297,39 @@ header {
       }
     }
   }
+  .dropdown {
+    &-items {
+      height: 50vh;
+      padding: 2vh 0;
+    }
+    &-prices {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &-navigate {
+      gap: 5px;
+      button {
+        padding: 5px 5px;
+      }
+    }
+
+    &-items {
+      &-slider {
+        &-product {
+          gap: 5px;
+
+          &-info {
+            gap: 0;
+          }
+          &-picture {
+            width: auto;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 630px) {

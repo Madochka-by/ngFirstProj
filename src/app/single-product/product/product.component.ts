@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { FlatMapService } from 'src/app/functionForAllProject/FlatMap/flat-map.service';
 import { LocalStorageService } from 'src/app/functionForAllProject/lcStorage/local-storage.service';
 import {
@@ -24,6 +24,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   public CurrentProduct!: CardData;
   public puctures!: string[];
   public sub!: Subscription;
+
+  private destroy$ = new Subject<void>();
 
   public plusFunc(): void {
     this.countOfProduct += 1;
@@ -52,23 +54,24 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
-      this.allData = this._func.bringingDataIntoLine(res);
-      this.viewProduct = this.allData.slice(0, 4);
-    });
-    this.CurrentProduct = this._func.getCurrentProductForCart();
-
-    if (this.CurrentProduct === undefined) {
-      this.sub = this._getData.getData().subscribe((res: CategoryOfProduct) => {
+    this._getData
+      .getData()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: CategoryOfProduct) => {
         const id: string | null = this._router.snapshot.paramMap.get('id');
-        this._func.bringingDataIntoLine(res).find((el: CardData) => {
-          if (el.name == id) this.CurrentProduct = el;
-        });
-        // console.log(this.CurrentProduct);
-      });
-    }
 
-    this.puctures = this.CurrentProduct.img.map((path: string) => path.replace(/\s+/g, '-'));
+        this.allData = this._func.bringingDataIntoLine(res);
+        this.viewProduct = this.allData.slice(0, 4);
+        this.CurrentProduct = this._func.getCurrentProductForCart();
+
+        if (this.CurrentProduct == undefined) {
+          this.CurrentProduct = this.allData.find((el: CardData) => el.name == id)!;
+        }
+
+        if (this.CurrentProduct) {
+          this.puctures = this.CurrentProduct.img.map((path: string) => path.replace(/\s+/g, '-'));
+        }
+      });
   }
 
   public set(): void {
@@ -97,6 +100,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
