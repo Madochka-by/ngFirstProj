@@ -1,9 +1,11 @@
 <div class="card">
-  <div class="overlay"></div>
+  <div (click)="goToPage()" class="overlay"></div>
   <div class="card-frame">
     <img class="card-frame__preview" [src]="img" alt="" />
     <div class="card-frame-hover">
-      <button>Add to cart</button>
+      <button (click)="_storage.getQuantity(1); set(); showBottomRight()">
+        Add to cart
+      </button>
       <div class="card-frame-hover-item">
         <i class="pi pi-share-alt"><span>Share</span></i>
         <i class="pi pi-arrow-right-arrow-left"><span>Compare</span></i>
@@ -18,6 +20,7 @@
     <div class="card-info-price" *ngIf="sale == ''; else withSale">
       <p>Rp {{ totalPrice }}</p>
     </div>
+
     <ng-template #withSale>
       <div class="card-info-price">
         <p>Rp {{ salePrice }}</p>
@@ -25,4 +28,5 @@
       </div>
     </ng-template>
   </div>
+  <p-toast [baseZIndex]="111" position="bottom-right" key="br" />
 </div>

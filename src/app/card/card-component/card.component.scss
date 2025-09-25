@@ -1,4 +1,21 @@
-@use "variables" as *;
+@use 'variables' as *;
+
+:host ::ng-deep .p-toast-bottom-right .p-toast-message {
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding: 10px;
+}
+
+:host ::ng-deep .p-toast-bottom-right {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+:host ::ng-deep .my-toast-success {
+  pointer-events: none;
+}
 
 .card {
   background: #f4f5f7;
@@ -21,7 +38,6 @@
       right: 20px;
       top: 20px;
       position: absolute;
-      // width: 10%;
     }
 
     &__preview {
@@ -83,7 +99,7 @@
   }
 
   &-info {
-    padding: 20px 10px 35px 10px;
+    padding: 20px 15px 35px 15px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -101,7 +117,9 @@
 
     &-price {
       display: flex;
-      gap: 10px;
+      gap: 5px;
+      height: 40px;
+      align-items: center;
 
       p {
         color: $color-darkGrey;
@@ -125,6 +143,27 @@
 
     .card-frame-hover {
       opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    .overlay {
+      background: none;
+    }
+    &-frame {
+      &-hover {
+        display: none;
+      }
+    }
+
+    &-info {
+      &-price {
+        flex-direction: column;
+        align-items: baseline;
+        // justify-content: center;
+      }
     }
   }
 }

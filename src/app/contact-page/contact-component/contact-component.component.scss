@@ -1,7 +1,7 @@
-@use "variables" as *;
+@use 'variables' as *;
 .pi.pi-mappin {
-  -webkit-mask: url("/assets/img/mappin.svg") no-repeat center;
-  mask: url("/assets/img/mappin.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/mappin.svg') no-repeat center;
+  mask: url('/assets/img/mappin.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -10,8 +10,8 @@
   height: 1em;
 }
 .pi.pi-phone {
-  -webkit-mask: url("/assets/img/phone.svg") no-repeat center;
-  mask: url("/assets/img/phone.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/phone.svg') no-repeat center;
+  mask: url('/assets/img/phone.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -20,8 +20,8 @@
   height: 1em;
 }
 .pi.pi-clock {
-  -webkit-mask: url("/assets/img/clock.svg") no-repeat center;
-  mask: url("/assets/img/clock.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/clock.svg') no-repeat center;
+  mask: url('/assets/img/clock.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -98,13 +98,14 @@
           font-weight: 500;
         }
         input {
-          width: 530px;
+          width: 40vw;
           border: 1px solid $color-secondLigthGrey;
           border-radius: 10px;
           padding: 20px 20px;
+          transition: 0.1s ease-in-out;
         }
         textarea {
-          width: 530px;
+          width: 40vw;
           border: 1px solid $color-secondLigthGrey;
           border-radius: 10px;
           padding: 20px 20px 60px 20px;
@@ -122,6 +123,60 @@
 
           &:active {
             opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    align-items: center;
+
+    &-content {
+      grid-template-columns: 1fr;
+
+      justify-items: center;
+
+      &-inputs {
+        grid-row: 1/2;
+
+        &-item {
+          align-self: center;
+        }
+
+        input {
+          width: 70vw;
+        }
+
+        textarea {
+          width: 70vw;
+        }
+
+        button {
+          width: 50vw;
+        }
+      }
+
+      &-contact {
+        flex-direction: row;
+        grid-row: 2/3;
+
+        &-items {
+          gap: 30px;
+          grid-template-rows: 5% 15%;
+
+          h1 {
+            font-size: 18px;
+          }
+
+          i {
+          }
+
+          p {
+            grid-column: 1 / span 3;
+            grid-row: 2/3;
           }
         }
       }

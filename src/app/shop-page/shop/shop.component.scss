@@ -1,6 +1,6 @@
 .pi.pi-grid {
-  -webkit-mask: url("/assets/img/Vector.svg") no-repeat center;
-  mask: url("/assets/img/Vector.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/Vector.svg') no-repeat center;
+  mask: url('/assets/img/Vector.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -10,8 +10,8 @@
 }
 
 .pi.pi-stack {
-  -webkit-mask: url("/assets/img/Vector2.svg") no-repeat center;
-  mask: url("/assets/img/Vector2.svg") no-repeat center;
+  -webkit-mask: url('/assets/img/Vector2.svg') no-repeat center;
+  mask: url('/assets/img/Vector2.svg') no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   background-color: currentColor;
@@ -20,7 +20,7 @@
   height: 1em;
 }
 
-@import "variables";
+@import 'variables';
 
 .sortline {
   padding: 25px 7vw;
@@ -106,9 +106,123 @@
   }
 }
 
+@media (max-width: 900px) {
+  .sortline {
+    display: grid;
+    grid-template-columns: 65% 35%;
+
+    &-content {
+    }
+
+    &-inputs {
+      .show {
+        display: none;
+      }
+
+      &-item {
+        &__sort {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
 .items {
+  color: $color-darkGrey;
+  display: block;
+  grid-template-columns: repeat(2, 20% 80%);
+
+  &-filter {
+    background: white;
+    z-index: 1111;
+    position: absolute;
+    padding: 10vh 10px 10vh 5vw;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+      &:active {
+        opacity: 0.9;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &-line {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        input {
+          width: 20px;
+          height: 20px;
+        }
+        i {
+          color: orange;
+        }
+      }
+
+      &-colors {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 15px;
+        width: 10%;
+
+        i {
+          width: 20px;
+          height: 20px;
+          border: 2px solid $color-darkGrey;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+      }
+
+      &__span {
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      ul {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+          cursor: pointer;
+          font-size: 16px;
+          transition: 0.2s;
+
+          &:hover {
+            opacity: 0.7;
+          }
+          &:active {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
   &-container {
-    grid-column: 1 / span 2;
+    grid-row: 1/2;
+    grid-column: 2/3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,4 +235,48 @@
       gap: 30px;
     }
   }
+}
+
+@media (max-width: 1150px) {
+  .items {
+    &-filter {
+      padding: 20px 20px 5px 20px;
+      position: relative;
+      gap: 20px;
+      width: 100%;
+      flex-direction: row;
+
+      &-container {
+        &-colors {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+
+    &-container {
+      &-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+.active-color {
+  transform: scale(1.5);
+}
+.active-size {
+  transform: scale(1.5);
+  transform: translateX(20px);
+  font-weight: 700;
+}
+.filter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: flex-end;
+}
+
+#emptyCard {
+  font-size: 32px;
+  font-weight: 700;
+  align-items: center;
 }

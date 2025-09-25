@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("/assets/img/shopBanner.png");
+  background-image: url('/assets/img/shopBanner.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,6 +30,18 @@
     span {
       font-weight: 300;
       font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .banner {
+    height: 22vh;
+
+    &-info {
+      h1 {
+        font-size: 28px;
+      }
     }
   }
 }

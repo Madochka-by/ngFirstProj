@@ -1,6 +1,9 @@
+// const { filter } = require("rxjs");
+
 const URL =
   "https://angularcommercewebsite-petproj-default-rtdb.firebaseio.com/.json";
 const addButton = document.getElementById("fetch");
+// const addButtonFILTER = document.getElementById("fetchFilter");
 
 addButton.addEventListener("click", () => {
   fetch(URL, {
@@ -467,7 +470,7 @@ addButton.addEventListener("click", () => {
               ],
               previewImg: "/assets/img/preview4.png",
               previewDescription: "Minimalist side table",
-              sale: "/assets/img/sale50.png",
+              sale: "50",
             },
             {
               id: 1,
@@ -791,3 +794,48 @@ addButton.addEventListener("click", () => {
     }),
   });
 });
+
+// addButtonFILTER.addEventListener("click", () => {
+//   fetch(URL, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       filter: {
+//         shopByRoom: {
+//           bedroom: ["chairs", "tables", "sofas"],
+//           dining: ["chairs", "tables", "sofas"],
+//           living: ["chairs", "tables", "sofas"],
+//         },
+//         size: ["XS", "S", "M", "L", "XL"],
+//         color: [
+//           "#000000",
+//           "#B88E2F",
+//           "#808080",
+//           "#FFFFFF",
+//           "#FFD700",
+//           "#8B4513",
+//           "#D3D3D3",
+//           "#FF69B4",
+//           "#816DFA",
+//           "#C0C0C0",
+//           "#8B0000",
+//         ],
+//         price: {
+//           "0-500.000": { min: 0, max: 500000 },
+//           "500.000-5.000.000": { min: 500000, max: 5000000 },
+//           "5.000.000-50.000.000": { min: 5000000, max: 50000000 },
+//           "50.000.000-550.000.000": { min: 50000000, max: 550000000 },
+//         },
+//         rating: {
+//           1: { min: 1, max: 1.9 },
+//           2: { min: 2, max: 2.9 },
+//           3: { min: 3, max: 3.9 },
+//           4: { min: 4, max: 4.9 },
+//           5: { min: 5, max: 5 },
+//         },
+//       },
+//     }),
+//   });
+// });

@@ -1,0 +1,323 @@
+@use 'variables' as *;
+.navigation {
+  padding: 5vh;
+  background-color: $color-beige;
+}
+.grid {
+  padding: 5vh 5vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px 5vw;
+
+  &-pictures {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    justify-self: flex-end;
+    align-self: center;
+    gap: 20px;
+
+    &-main {
+      background-color: $color-beige;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    &-line {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+      align-items: center;
+
+      img {
+        width: 100%;
+        background-color: $color-beige;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-information {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+
+    h1 {
+      font-size: 42px;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 24px;
+      color: $color-secondLigthGrey;
+    }
+
+    h3 {
+      line-height: 125%;
+      font-size: 13px;
+      width: 30vw;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    #square {
+      background: $color-beige;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+    }
+
+    #circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .color {
+      color: $color-secondLigthGrey;
+    }
+
+    .line {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      i {
+        color: $color-orange;
+      }
+    }
+
+    hr {
+      height: 30px;
+      width: 1px;
+      background-color: $color-secondLigthGrey;
+      margin: 0 15px;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      &-line {
+        display: flex;
+        gap: 10px;
+      }
+    }
+
+    &-buttons {
+      padding-top: 15px;
+      display: flex;
+      gap: 15px;
+
+      &-incdec {
+        border: 1px solid $color-secondLigthGrey;
+        padding: 20px 10px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        border-radius: 10px;
+
+        p {
+          text-align: center;
+          width: 20px;
+        }
+
+        button {
+          background: transparent;
+          font-size: 10px;
+        }
+      }
+
+      input {
+        background: transparent;
+        padding: 10px 3vw;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+
+      .custom {
+        background: transparent;
+        padding: 10px 3vw;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  &-another {
+    color: $color-secondLigthGrey;
+    margin-top: 5vh;
+    padding: 5vh 0;
+    border-top: 1px solid $color-secondLigthGrey;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: flex;
+    gap: 15px;
+
+    ul {
+      flex-direction: column;
+      display: flex;
+      gap: 20px;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        font-size: 20px;
+        color: black;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:active {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+.activeTit {
+  color: black;
+}
+.description {
+  padding: 30px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid $color-secondLigthGrey;
+  border-bottom: 1px solid $color-secondLigthGrey;
+
+  &-heading {
+    display: flex;
+    gap: 50px;
+    font-size: 24px;
+    color: $color-secondLigthGrey;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    p {
+      color: $color-secondLigthGrey;
+      width: 70vw;
+    }
+  }
+
+  &-pictures {
+    display: flex;
+    gap: 30px;
+
+    img {
+      border-radius: 10px;
+      background-color: $color-beige;
+    }
+  }
+}
+
+.related {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5vh 5vw;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  &-product {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  &__btn {
+    background: transparent;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    font-weight: 600;
+    padding: 5px 5vw;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+
+    &-pictures {
+      display: grid;
+      grid-template-rows: auto auto;
+
+      &-main {
+        display: flex;
+        justify-content: center;
+      }
+
+      &-line {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    &-information {
+      h3 {
+        width: auto;
+      }
+    }
+  }
+
+  .description {
+    &-pictures {
+      flex-direction: column;
+    }
+  }
+}
